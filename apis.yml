@@ -1,0 +1,32 @@
+aid: positionstack
+name: positionstack
+description: "Forward & Reverse Batch Geocoding REST API"
+url: https://positionstack.com/
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Geocoding"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Geocoding
+  - Public APIs
+apis:
+  - name: positionstack
+    description: "Forward & Reverse Batch Geocoding REST API"
+    humanURL: https://positionstack.com/
+    baseURL: https://positionstack.com/
+    tags:
+      - Geocoding
+    properties:
+      - type: Documentation
+        url: https://positionstack.com/
+common:
+  - type: Website
+    url: https://positionstack.com/
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
