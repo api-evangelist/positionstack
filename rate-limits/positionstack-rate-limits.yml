@@ -1,0 +1,99 @@
+apiCommonsRateLimitsVersion: "0.1"
+provider:
+  id: positionstack
+  name: positionstack
+  url: https://positionstack.com/
+
+policies:
+  - id: free-standard
+    appliesTo:
+      plan: free
+    type: monthly-quota
+    quota:
+      window: month
+      max: 100
+    enforcement: hard
+    onExceeded:
+      response:
+        status: 429
+        errorCode: 104
+        errorType: usage_limit_reached
+    notes: |
+      Free plan is hard-capped at 100 requests per calendar month. No per-second
+      rate limit is published; concurrency throttling applies at the apilayer edge.
+
+  - id: basic-extended
+    appliesTo:
+      plan: basic
+    type: monthly-quota
+    quota:
+      window: month
+      max: 100000
+    overage:
+      allowed: true
+      pricePerRequestUsd: 0.0003996
+    enforcement: soft-with-overage
+    notes: |
+      Basic plan grants 100,000 requests/month with overage billing. apilayer edge
+      enforces per-key concurrency; no documented per-second cap.
+
+  - id: professional-extended
+    appliesTo:
+      plan: professional
+    type: monthly-quota
+    quota:
+      window: month
+      max: 1000000
+    overage:
+      allowed: true
+      pricePerRequestUsd: 0.00019996
+    enforcement: soft-with-overage
+
+  - id: business-extended
+    appliesTo:
+      plan: business
+    type: monthly-quota
+    quota:
+      window: month
+      max: 3000000
+    overage:
+      allowed: true
+      pricePerRequestUsd: 0.00013332
+    enforcement: soft-with-overage
+
+  - id: enterprise-custom
+    appliesTo:
+      plan: enterprise
+    type: monthly-quota
+    quota:
+      window: month
+      max: custom
+    enforcement: contractual
+    notes: |
+      Enterprise quota and rate limits negotiated per contract with the apilayer
+      sales/support team.
+
+batchLimits:
+  forwardMaxQueries: 80
+  reverseMaxQueries: 80
+  notes: |
+    Each batch request counts against the monthly quota per included query
+    (one batched query of 10 addresses counts as 10 requests).
+
+quotaNotifications:
+  thresholds: [0.75, 0.90, 1.00]
+  channels: [email, dashboard]
+
+responseHeaders:
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+
+errorSurface:
+  - code: 104
+    type: usage_limit_reached
+    status: 429
+    description: Monthly request quota exhausted (or overage not permitted on plan).
+  - code: 105
+    type: function_access_restricted
+    status: 403
+    description: Requested feature (e.g. batch, HTTPS) not available on current plan.

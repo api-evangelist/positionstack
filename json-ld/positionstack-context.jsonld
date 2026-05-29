@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ps": "https://api-evangelist.github.io/positionstack/vocab#",
+
+    "Location": "schema:Place",
+    "ErrorResponse": "ps:ErrorResponse",
+
+    "latitude": { "@id": "geo:lat", "@type": "xsd:double" },
+    "longitude": { "@id": "geo:long", "@type": "xsd:double" },
+    "label": "schema:name",
+    "name": "schema:name",
+    "type": "ps:resultType",
+    "number": "schema:streetAddress",
+    "postal_code": "schema:postalCode",
+    "street": "schema:streetAddress",
+    "confidence": { "@id": "ps:confidence", "@type": "xsd:float" },
+    "region": "schema:addressRegion",
+    "region_code": "ps:regionCode",
+    "county": "ps:county",
+    "locality": "schema:addressLocality",
+    "administrative_area": "ps:administrativeArea",
+    "neighbourhood": "schema:district",
+    "country": "schema:addressCountry",
+    "country_code": "ps:countryCode",
+    "continent": "ps:continent",
+    "map_url": { "@id": "schema:url", "@type": "@id" },
+    "distance": { "@id": "ps:distanceMeters", "@type": "xsd:float" },
+
+    "country_module": "ps:countryEnrichment",
+    "timezone_module": "ps:timezoneEnrichment",
+    "sun_module": "ps:sunEnrichment",
+    "bbox_module": "ps:boundingBox",
+
+    "data": { "@id": "ps:data", "@container": "@set" }
+  }
+}

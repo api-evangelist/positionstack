@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/positionstack/json-schema/positionstack-error-schema.json",
+  "title": "ErrorResponse",
+  "description": "Standard apilayer/positionstack error envelope.",
+  "type": "object",
+  "required": ["success", "error"],
+  "properties": {
+    "success": { "type": "boolean", "const": false },
+    "error": {
+      "type": "object",
+      "required": ["code", "type", "info"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "Numeric error code (e.g. 101 invalid_access_key, 104 usage_limit_reached, 601 invalid_query)."
+        },
+        "type": { "type": "string" },
+        "info": { "type": "string" }
+      }
+    }
+  }
+}

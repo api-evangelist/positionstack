@@ -1,0 +1,111 @@
+apiCommonsPlansVersion: "0.1"
+provider:
+  id: positionstack
+  name: positionstack
+  parent: apilayer (Idera, Inc.)
+  url: https://positionstack.com/
+  pricingUrl: https://positionstack.com/product
+  currency: USD
+  billing:
+    cycles: [monthly, yearly]
+    yearlyDiscount: true
+
+plans:
+  - id: free
+    name: Free
+    tier: 1
+    price:
+      monthly: 0
+      yearly: 0
+    quota:
+      requestsPerMonth: 100
+    features:
+      - Forward Geocoding
+      - Reverse Geocoding
+      - HTTPS encryption (no)
+      - JSON output only
+    license: Personal use only
+    support: None
+    rateLimit: standard
+    notes: |
+      Free plan only allows personal/non-commercial use, no HTTPS, JSON output only, no batch.
+
+  - id: basic
+    name: Basic
+    tier: 2
+    price:
+      monthly: 9.99
+      yearly: 107.88
+      yearlyMonthlyEquivalent: 8.99
+    quota:
+      requestsPerMonth: 100000
+      overageUsdPerRequest: 0.0003996
+    features:
+      - Forward Geocoding
+      - Reverse Geocoding
+      - HTTPS encryption
+      - JSON / XML / GeoJSON output
+      - Multiple language support
+      - Embeddable maps
+      - Commercial license
+    support: Standard
+    rateLimit: extended
+
+  - id: professional
+    name: Professional
+    tier: 3
+    price:
+      monthly: 49.99
+      yearly: 527.88
+      yearlyMonthlyEquivalent: 43.99
+    quota:
+      requestsPerMonth: 1000000
+      overageUsdPerRequest: 0.00019996
+    features:
+      - All Basic features
+      - Batch geocoding endpoint
+      - Commercial license
+    support: Standard
+    rateLimit: extended
+
+  - id: business
+    name: Business
+    tier: 4
+    price:
+      monthly: 99.99
+      yearly: 1019.88
+      yearlyMonthlyEquivalent: 84.99
+    quota:
+      requestsPerMonth: 3000000
+      overageUsdPerRequest: 0.00013332
+    features:
+      - All Professional features
+      - Higher monthly quota
+    support: Standard
+    rateLimit: extended
+
+  - id: enterprise
+    name: Enterprise (Platinum)
+    tier: 5
+    price:
+      monthly: custom
+      yearly: custom
+    quota:
+      requestsPerMonth: custom
+    features:
+      - All Business features
+      - Custom volume commitments
+      - SLA terms
+      - Dedicated account team
+      - Priority email support
+      - Quarterly briefing calls
+      - Feature request prioritization
+    support: Platinum
+    rateLimit: custom
+    contact: support@positionstack.com
+
+overage:
+  enabled: true
+  notifications: [0.75, 0.90, 1.00]
+  description: |
+    Overage allowed on paid plans; users are notified at 75%, 90%, and 100% of monthly quota.

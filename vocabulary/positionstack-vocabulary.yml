@@ -1,0 +1,74 @@
+vocabulary:
+  name: positionstack
+  description: Controlled vocabulary, taxonomies, and key terms used across the positionstack API.
+  domain: Geocoding
+  terms:
+    - term: Forward Geocoding
+      definition: Converting a free-text address, place name, or postal code into geographic coordinates.
+      synonyms: [address-to-coordinates, address geocoding]
+    - term: Reverse Geocoding
+      definition: Converting latitude/longitude coordinates into a structured address.
+      synonyms: [coordinates-to-address, reverse lookup]
+    - term: Batch Geocoding
+      definition: Running multiple forward or reverse lookups in a single API call. Professional plan and above.
+    - term: Confidence Score
+      definition: Float in [0,1] representing the match quality between query and returned result.
+    - term: BBox
+      definition: Bounding box as [min_lon, min_lat, max_lon, max_lat].
+    - term: Country Module
+      definition: Optional response enrichment with ISO codes, currency, languages, flag, dial code, and area.
+    - term: Timezone Module
+      definition: Optional response enrichment with IANA timezone, GMT offset, abbreviation, DST status.
+    - term: Sun Module
+      definition: Optional response enrichment with sunrise, sunset, and solar transit times.
+    - term: BBox Module
+      definition: Optional response enrichment with bounding box coordinates per result.
+  resultTypes:
+    - address
+    - venue
+    - street
+    - neighbourhood
+    - borough
+    - locality
+    - county
+    - macrocounty
+    - region
+    - macroregion
+    - country
+    - coarse
+    - postalcode
+  outputFormats:
+    - json
+    - xml
+    - geojson
+  errorCodes:
+    - code: 101
+      type: invalid_access_key
+    - code: 103
+      type: invalid_api_function
+    - code: 104
+      type: usage_limit_reached
+    - code: 105
+      type: function_access_restricted
+    - code: 601
+      type: invalid_query
+    - code: 602
+      type: no_results_found
+    - code: 603
+      type: invalid_latitude
+    - code: 604
+      type: invalid_longitude
+    - code: 605
+      type: invalid_bbox
+  dataSources:
+    - Nominatim
+    - GeoNames
+    - Pelias
+    - OpenStreetMap
+  tags:
+    - Geocoding
+    - Reverse Geocoding
+    - Maps
+    - Location
+    - Address Validation
+    - apilayer

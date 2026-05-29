@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.positionstack.com/v1/reverse",
+    "query": {
+      "access_key": "YOUR_ACCESS_KEY",
+      "query": "40.7638435,-73.9729691",
+      "limit": 1
+    }
+  },
+  "response": {
+    "data": [
+      {
+        "latitude": 40.763901,
+        "longitude": -73.973038,
+        "type": "address",
+        "distance": 17.5,
+        "name": "Trump Tower",
+        "number": "725",
+        "postal_code": "10022",
+        "street": "5th Avenue",
+        "confidence": 1,
+        "region": "New York",
+        "region_code": "NY",
+        "county": "New York County",
+        "locality": "New York",
+        "administrative_area": null,
+        "neighbourhood": "Midtown East",
+        "country": "United States",
+        "country_code": "USA",
+        "continent": "North America",
+        "label": "Trump Tower, 725 5th Avenue, New York, NY, USA",
+        "map_url": "http://map.positionstack.com/?marker=40.763901,-73.973038&zoom=20"
+      }
+    ]
+  }
+}

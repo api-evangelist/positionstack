@@ -1,0 +1,125 @@
+apiCommonsFinOpsVersion: "0.1"
+focusSpecVersion: "1.0"
+provider:
+  id: positionstack
+  name: positionstack
+  parent: apilayer (Idera, Inc.)
+  url: https://positionstack.com/
+  billingCurrency: USD
+
+# Mapping the positionstack/apilayer billing surface to the FinOps Foundation
+# FOCUS data spec dimensions and metrics.
+
+billableServices:
+  - serviceName: positionstack Geocoding API
+    serviceCategory: Geocoding / Location
+    serviceSubCategory: Forward & Reverse Geocoding
+    publisherName: apilayer
+    invoiceIssuer: Idera, Inc.
+
+  - serviceName: positionstack Batch Geocoding
+    serviceCategory: Geocoding / Location
+    serviceSubCategory: Batch Lookups
+    availability: Professional plan and above
+
+skuPricing:
+  - skuId: positionstack-basic-subscription
+    skuPriceId: USD-monthly
+    chargeCategory: Subscription
+    chargeFrequency: Recurring
+    pricingUnit: subscription/month
+    pricingQuantity: 1
+    listUnitPrice: 9.99
+    includedQuantity: 100000
+    quotaUnit: request
+
+  - skuId: positionstack-basic-overage
+    skuPriceId: USD-per-request
+    chargeCategory: Usage
+    chargeFrequency: OneTime
+    pricingUnit: request
+    listUnitPrice: 0.0003996
+
+  - skuId: positionstack-professional-subscription
+    skuPriceId: USD-monthly
+    chargeCategory: Subscription
+    chargeFrequency: Recurring
+    pricingUnit: subscription/month
+    pricingQuantity: 1
+    listUnitPrice: 49.99
+    includedQuantity: 1000000
+    quotaUnit: request
+
+  - skuId: positionstack-professional-overage
+    chargeCategory: Usage
+    chargeFrequency: OneTime
+    pricingUnit: request
+    listUnitPrice: 0.00019996
+
+  - skuId: positionstack-business-subscription
+    chargeCategory: Subscription
+    chargeFrequency: Recurring
+    pricingUnit: subscription/month
+    listUnitPrice: 99.99
+    includedQuantity: 3000000
+    quotaUnit: request
+
+  - skuId: positionstack-business-overage
+    chargeCategory: Usage
+    chargeFrequency: OneTime
+    pricingUnit: request
+    listUnitPrice: 0.00013332
+
+  - skuId: positionstack-enterprise
+    chargeCategory: Subscription
+    chargeFrequency: Recurring
+    pricingUnit: contract
+    listUnitPrice: null
+    notes: Custom-negotiated enterprise contract.
+
+  - skuId: positionstack-yearly-discount
+    chargeCategory: Adjustment
+    chargeSubCategory: PrepaymentDiscount
+    description: Yearly billing reduces effective monthly price (Basic 8.99/Pro 43.99/Business 84.99).
+
+costAllocation:
+  primaryDimension: subscription plan
+  secondaryDimensions:
+    - operation (forward vs reverse vs batch)
+    - module flags (country/timezone/sun/bbox)
+    - output format
+  notes: |
+    All operations count as 1 request against monthly quota. Module flags do not
+    affect per-request cost. Batch requests are billed by the number of queries
+    included, not by the number of HTTP calls.
+
+usageMetrics:
+  - metricName: requests
+    metricUnit: request
+    windowGranularity: month
+    overageBilling: enabled (paid plans)
+
+invoiceMapping:
+  invoiceCurrency: USD
+  invoicePeriod: monthly
+  billingAccountId: apilayer account ID
+  subAccountId: positionstack subscription ID
+
+reservedCapacity: null
+commitmentDiscounts:
+  - type: yearly-prepayment
+    appliesTo: [basic, professional, business]
+    savings:
+      basic: 10%
+      professional: 12%
+      business: 15%
+
+freeTier:
+  description: 100 requests/month, personal-use only.
+  appliesTo: [free]
+
+tags:
+  - apilayer
+  - Geocoding
+  - SaaS Subscription
+  - FOCUS-mapped

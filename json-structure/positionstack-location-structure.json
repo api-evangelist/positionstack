@@ -1,0 +1,32 @@
+{
+  "$id": "https://api-evangelist.github.io/positionstack/json-structure/positionstack-location-structure.json",
+  "title": "Location",
+  "description": "JSON Structure documentation for a positionstack Location record.",
+  "type": "object",
+  "fields": [
+    { "name": "latitude", "type": "number", "unit": "degree", "description": "Geographic latitude" },
+    { "name": "longitude", "type": "number", "unit": "degree", "description": "Geographic longitude" },
+    { "name": "type", "type": "string", "description": "Result type classification" },
+    { "name": "name", "type": "string", "description": "Short name of the location" },
+    { "name": "number", "type": "string", "nullable": true, "description": "Street/building number" },
+    { "name": "postal_code", "type": "string", "nullable": true, "description": "Postal/ZIP code" },
+    { "name": "street", "type": "string", "nullable": true, "description": "Street name" },
+    { "name": "confidence", "type": "number", "range": "0..1", "description": "Match confidence score" },
+    { "name": "region", "type": "string", "nullable": true, "description": "State/region name" },
+    { "name": "region_code", "type": "string", "nullable": true, "description": "ISO 3166-2 region code" },
+    { "name": "county", "type": "string", "nullable": true },
+    { "name": "locality", "type": "string", "nullable": true, "description": "City/locality" },
+    { "name": "administrative_area", "type": "string", "nullable": true },
+    { "name": "neighbourhood", "type": "string", "nullable": true },
+    { "name": "country", "type": "string", "description": "Country name" },
+    { "name": "country_code", "type": "string", "pattern": "ISO 3166-1 alpha-3" },
+    { "name": "continent", "type": "string", "nullable": true },
+    { "name": "label", "type": "string", "description": "Fully formatted address label" },
+    { "name": "map_url", "type": "string", "format": "uri", "nullable": true },
+    { "name": "distance", "type": "number", "unit": "meter", "nullable": true, "description": "Reverse geocoding only" },
+    { "name": "country_module", "type": "object", "optional": true, "description": "Country enrichment (country_module=1)" },
+    { "name": "timezone_module", "type": "object", "optional": true, "description": "Timezone enrichment (timezone_module=1)" },
+    { "name": "sun_module", "type": "object", "optional": true, "description": "Sunrise/sunset enrichment (sun_module=1)" },
+    { "name": "bbox_module", "type": "array", "optional": true, "description": "Bounding box (bbox_module=1)" }
+  ]
+}

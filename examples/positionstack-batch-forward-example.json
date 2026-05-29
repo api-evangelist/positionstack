@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.positionstack.com/v1/forward",
+    "query": {
+      "access_key": "YOUR_ACCESS_KEY",
+      "query": "1600 Pennsylvania Ave NW Washington DC,Eiffel Tower Paris,Sydney Opera House",
+      "limit": 1
+    },
+    "notes": "Comma-separated queries trigger a batch lookup (Professional plan and above)."
+  },
+  "response": {
+    "data": [
+      {
+        "latitude": 38.897675,
+        "longitude": -77.036547,
+        "label": "1600 Pennsylvania Avenue NW, Washington, DC, USA",
+        "country": "United States",
+        "country_code": "USA",
+        "confidence": 1,
+        "query": "1600 Pennsylvania Ave NW Washington DC"
+      },
+      {
+        "latitude": 48.858262,
+        "longitude": 2.293763,
+        "label": "Eiffel Tower, Paris, France",
+        "country": "France",
+        "country_code": "FRA",
+        "confidence": 1,
+        "query": "Eiffel Tower Paris"
+      },
+      {
+        "latitude": -33.856784,
+        "longitude": 151.215297,
+        "label": "Sydney Opera House, Sydney NSW, Australia",
+        "country": "Australia",
+        "country_code": "AUS",
+        "confidence": 1,
+        "query": "Sydney Opera House"
+      }
+    ]
+  }
+}

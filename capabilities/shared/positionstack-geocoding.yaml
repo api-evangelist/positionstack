@@ -1,0 +1,54 @@
+apiVersion: naftiko.dev/v1
+kind: Capability
+metadata:
+  name: positionstack-geocoding
+  provider: positionstack
+  description: |
+    Shared positionstack capability surface covering forward and reverse geocoding,
+    batch lookups, and optional data modules (country, timezone, sun, bounding box).
+spec:
+  api:
+    name: positionstack
+    baseUrl: https://api.positionstack.com/v1
+    openapi: ../../openapi/positionstack-openapi.yml
+  authentication:
+    type: apiKey
+    location: query
+    name: access_key
+    secretRef: POSITIONSTACK_ACCESS_KEY
+  operations:
+    - id: forward
+      operationId: forwardGeocode
+      description: Convert a single address or place name into coordinates.
+      inputs: [query, country, region, limit, language]
+    - id: reverse
+      operationId: reverseGeocode
+      description: Convert latitude/longitude into a structured address.
+      inputs: [query, limit, language]
+    - id: forward-batch
+      operationId: forwardGeocode
+      description: Batch forward geocoding (comma-separated queries, Professional+ plan).
+      inputs: [query]
+      requiresPlan: professional
+    - id: reverse-batch
+      operationId: reverseGeocode
+      description: Batch reverse geocoding (semicolon-separated coordinates, Professional+ plan).
+      inputs: [query]
+      requiresPlan: professional
+  modules:
+    - id: country_module
+      flag: country_module=1
+      description: Adds country-level enrichment (ISO codes, currency, languages, flag).
+    - id: timezone_module
+      flag: timezone_module=1
+      description: Adds IANA timezone, offset, and DST status.
+    - id: sun_module
+      flag: sun_module=1
+      description: Adds sunrise, sunset, and solar transit times.
+    - id: bbox_module
+      flag: bbox_module=1
+      description: Adds bounding box coordinates per result.
+  governance:
+    rateLimits: ../../rate-limits/positionstack-rate-limits.yml
+    plans: ../../plans/positionstack-plans-pricing.yml
+    finops: ../../finops/positionstack-finops.yml

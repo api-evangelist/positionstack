@@ -1,0 +1,32 @@
+apiVersion: naftiko.dev/v1
+kind: CapabilityWorkflow
+metadata:
+  name: address-to-coordinates
+  description: |
+    Convert a user-supplied postal address into latitude/longitude coordinates,
+    optionally enriched with country metadata and timezone information.
+spec:
+  inputs:
+    - name: address
+      type: string
+      required: true
+    - name: country_filter
+      type: string
+      required: false
+  steps:
+    - id: geocode
+      uses: positionstack-geocoding#forward
+      with:
+        query: "{{ inputs.address }}"
+        country: "{{ inputs.country_filter }}"
+        limit: 1
+        country_module: 1
+        timezone_module: 1
+      bind:
+        match: data[0]
+  outputs:
+    latitude: "{{ match.latitude }}"
+    longitude: "{{ match.longitude }}"
+    label: "{{ match.label }}"
+    country: "{{ match.country_module.common_name }}"
+    timezone: "{{ match.timezone_module.name }}"

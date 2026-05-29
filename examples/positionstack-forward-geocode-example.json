@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.positionstack.com/v1/forward",
+    "query": {
+      "access_key": "YOUR_ACCESS_KEY",
+      "query": "1600 Pennsylvania Ave NW, Washington DC",
+      "limit": 1,
+      "country_module": 1
+    }
+  },
+  "response": {
+    "data": [
+      {
+        "latitude": 38.897675,
+        "longitude": -77.036547,
+        "type": "address",
+        "name": "1600 Pennsylvania Avenue NW",
+        "number": "1600",
+        "postal_code": "20500",
+        "street": "Pennsylvania Avenue NW",
+        "confidence": 1,
+        "region": "District of Columbia",
+        "region_code": "DC",
+        "county": "District of Columbia",
+        "locality": "Washington",
+        "administrative_area": null,
+        "neighbourhood": "White House Grounds",
+        "country": "United States",
+        "country_code": "USA",
+        "continent": "North America",
+        "label": "1600 Pennsylvania Avenue NW, Washington, DC, USA",
+        "map_url": "http://map.positionstack.com/?marker=38.897675,-77.036547&zoom=20"
+      }
+    ]
+  }
+}

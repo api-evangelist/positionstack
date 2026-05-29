@@ -1,0 +1,112 @@
+# Spectral ruleset enforcing positionstack OpenAPI conventions.
+# Apply with: spectral lint openapi/positionstack-openapi.yml --ruleset rules/positionstack-rules.yml
+extends:
+  - spectral:oas
+rules:
+  # All operations must require an access_key query parameter
+  positionstack-access-key-required:
+    description: Every operation must include an `access_key` query parameter (security requirement).
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            parameters:
+              type: array
+              contains:
+                type: object
+                properties:
+                  name:
+                    const: access_key
+                  in:
+                    const: query
+                  required:
+                    const: true
+                required: [name, in, required]
+          required: [parameters]
+
+  # Operation summaries must use Title Case
+  positionstack-operation-summary-title-case:
+    description: Operation summaries should be Title Case (e.g. "Forward Geocode an Address").
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # Endpoints must support standard output formats
+  positionstack-supports-output-formats:
+    description: Geocoding endpoints should expose `output` parameter accepting json, xml, or geojson.
+    severity: info
+    given: "$.paths[/forward,/reverse].get.parameters[?(@.name=='output')].schema.enum"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains: { const: json }
+
+  # Paths must remain under /v1 (single canonical version)
+  positionstack-version-path:
+    description: All paths should be served under the single canonical /v1 base path.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "/v1$"
+
+  # Add-on modules must be opt-in via 0/1 flag
+  positionstack-module-flag-enum:
+    description: Module-enable parameters (`country_module`, `sun_module`, `timezone_module`, `bbox_module`) must accept only 0 or 1.
+    severity: error
+    given: "$.paths[*].get.parameters[?(@.name=~/_module$/)].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            enum:
+              type: array
+              items: { type: integer, enum: [0, 1] }
+          required: [enum]
+
+  # Limit must cap at 80 (positionstack hard limit)
+  positionstack-limit-max-80:
+    description: The `limit` parameter must enforce a maximum of 80 (positionstack hard cap).
+    severity: error
+    given: "$.paths[*].get.parameters[?(@.name=='limit')].schema"
+    then:
+      field: maximum
+      function: schema
+      functionOptions:
+        schema:
+          type: integer
+          maximum: 80
+
+  # Responses must include 401/429 for auth / quota
+  positionstack-quota-responses:
+    description: Operations should document 401 (auth) and 429 (quota) error responses.
+    severity: warn
+    given: "$.paths[*][get,post].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required: ["200", "401", "429"]
+
+  # Error responses must use the standard apilayer error envelope
+  positionstack-error-envelope:
+    description: Error responses should reference the shared ErrorResponse schema.
+    severity: warn
+    given: "$.paths[*][get,post].responses[401,403,404,429,500].content.application/json.schema.$ref"
+    then:
+      function: pattern
+      functionOptions:
+        match: "ErrorResponse$"

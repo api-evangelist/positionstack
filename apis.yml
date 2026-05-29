@@ -1,32 +1,186 @@
 aid: positionstack
 name: positionstack
-description: "Forward & Reverse Batch Geocoding REST API"
+description: >-
+  Forward and Reverse Batch Geocoding REST API by positionstack (an apilayer
+  product, owned by Idera, Inc.). Convert addresses to coordinates and
+  coordinates to addresses across 2+ billion global places, with optional
+  data modules for country, timezone, sun, and bounding-box enrichment.
 url: https://positionstack.com/
+image: https://positionstack.com/site_images/positionstack_square.png
 specificationVersion: '0.20'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-29'
 x-source: public-apis/public-apis
-x-category: "Geocoding"
+x-category: Geocoding
+x-type: company
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 tags:
   - Geocoding
+  - Reverse Geocoding
+  - Maps
+  - Location
+  - Address Validation
+  - apilayer
   - Public APIs
 apis:
-  - name: positionstack
-    description: "Forward & Reverse Batch Geocoding REST API"
+  - name: positionstack Geocoding API
+    description: >-
+      REST API providing forward geocoding (address to coordinates), reverse
+      geocoding (coordinates to address), and batch lookups, with optional
+      enrichment modules for country, timezone, sun, and bounding box.
     humanURL: https://positionstack.com/
-    baseURL: https://positionstack.com/
+    baseURL: https://api.positionstack.com/v1
     tags:
       - Geocoding
+      - Reverse Geocoding
+      - Batch Geocoding
     properties:
       - type: Documentation
-        url: https://positionstack.com/
+        url: https://docs.apilayer.com/positionstack/docs/api-documentation
+      - type: APIReference
+        url: https://docs.apilayer.com/positionstack/docs/api-documentation
+      - type: Quickstart
+        url: https://docs.apilayer.com/positionstack/docs/getting-started
+      - type: Authentication
+        url: https://docs.apilayer.com/positionstack/docs/api-documentation
+      - type: OpenAPI
+        url: openapi/positionstack-openapi.yml
+      - type: JSONSchema
+        url: json-schema/positionstack-location-schema.json
+      - type: JSONSchema
+        url: json-schema/positionstack-error-schema.json
+      - type: JSONStructure
+        url: json-structure/positionstack-location-structure.json
+      - type: JSON-LD
+        url: json-ld/positionstack-context.jsonld
+      - type: Example
+        url: examples/positionstack-forward-geocode-example.json
+      - type: Example
+        url: examples/positionstack-reverse-geocode-example.json
+      - type: Example
+        url: examples/positionstack-batch-forward-example.json
+      - type: Example
+        url: examples/positionstack-error-example.json
+      - type: RateLimits
+        url: rate-limits/positionstack-rate-limits.yml
 common:
   - type: Website
     url: https://positionstack.com/
+  - type: Portal
+    url: https://positionstack.com/dashboard
+  - type: SignUp
+    url: https://positionstack.com/signup/free
+  - type: Pricing
+    url: https://positionstack.com/product
+  - type: Documentation
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: GettingStarted
+    url: https://docs.apilayer.com/positionstack/docs/getting-started
+  - type: Blog
+    url: https://blog.apilayer.com/
+  - type: StatusPage
+    url: https://positionstack.com/api-status
+  - type: Support
+    url: mailto:support@positionstack.com
+  - type: FAQ
+    url: https://positionstack.com/faq
+  - type: TermsOfService
+    url: https://www.ideracorp.com/legal/APILayer
+  - type: PrivacyPolicy
+    url: https://www.ideracorp.com/Legal/PrivacyPolicy
+  - type: GitHubOrganization
+    url: https://github.com/apilayer
+  - type: GitHubRepository
+    url: https://github.com/apilayer/positionstack
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - type: Plans
+    url: plans/positionstack-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/positionstack-rate-limits.yml
+  - type: FinOps
+    url: finops/positionstack-finops.yml
+  - type: SpectralRules
+    url: rules/positionstack-rules.yml
+  - type: Vocabulary
+    url: vocabulary/positionstack-vocabulary.yml
+  - type: NaftikoCapability
+    url: capabilities/shared/positionstack-geocoding.yaml
+  - type: NaftikoCapability
+    url: capabilities/address-to-coordinates.yaml
+  - type: NaftikoCapability
+    url: capabilities/coordinates-to-address.yaml
+  - type: NaftikoCapability
+    url: capabilities/bulk-address-cleansing.yaml
+  - type: Features
+    data:
+      - name: Forward Geocoding
+        description: Convert addresses, place names, and postal codes into geographic coordinates.
+      - name: Reverse Geocoding
+        description: Convert latitude/longitude coordinates into structured address data.
+      - name: Batch Geocoding
+        description: Run up to 80 forward or reverse lookups per request (Professional plan and above).
+      - name: Multiple Output Formats
+        description: Responses available in JSON, XML, and GeoJSON.
+      - name: Embeddable Maps
+        description: Each result includes a `map_url` that can be embedded via iFrame.
+      - name: Multi-Language Results
+        description: Localize results in multiple languages via the `language` parameter.
+      - name: Country Module
+        description: Optional enrichment adding ISO codes, currency, languages, flag, dial code, and area.
+      - name: Timezone Module
+        description: Optional enrichment with IANA timezone, GMT offset, abbreviation, and DST status.
+      - name: Sun Module
+        description: Optional enrichment with sunrise, sunset, and solar transit times.
+      - name: BBox Module
+        description: Optional enrichment with bounding box coordinates per result.
+      - name: 2+ Billion Places
+        description: Global coverage across 2+ billion addresses and places.
+      - name: 99.9% Uptime
+        description: Average reported availability across forward, reverse, and batch endpoints.
+      - name: Overage Notifications
+        description: Email and dashboard alerts at 75%, 90%, and 100% of monthly quota.
+  - type: UseCases
+    data:
+      - name: Address Autocomplete
+        description: Power address autocomplete and validation in signup or checkout flows.
+      - name: Fleet & Asset Tracking
+        description: Resolve GPS coordinates from vehicles, IoT devices, or pet trackers into addresses.
+      - name: Store Locator
+        description: Geocode user-entered addresses to find nearest stores or service centers.
+      - name: Logistics & Delivery
+        description: Cleanse and standardize delivery addresses across bulk shipment manifests.
+      - name: Real Estate Listings
+        description: Map property listings by geocoding street addresses.
+      - name: Market Analysis
+        description: Enrich CRM records with geographic, country, and timezone data.
+      - name: Weather & Local Services
+        description: Pair coordinates with weather APIs (e.g. weatherstack) for hyper-local services.
+  - type: Integrations
+    data:
+      - name: weatherstack
+        description: Sibling apilayer API providing weather data for resolved coordinates.
+      - name: ipstack
+        description: Sibling apilayer API offering IP geolocation that pairs with positionstack lookups.
+      - name: streetlayer
+        description: Sibling apilayer API for address verification and autocomplete.
+      - name: Mapbox / Leaflet / OpenStreetMap
+        description: Display positionstack results on third-party map libraries via the embeddable `map_url`.
+      - name: Power BI / Tableau / Excel
+        description: Bulk-enrich spreadsheet data with coordinates via the batch endpoint.
+  - type: Solutions
+    data:
+      - name: Free / Hobbyist
+        description: 100 requests/month, personal use, JSON output, no HTTPS.
+      - name: Basic
+        description: 100k req/mo, $9.99/mo, HTTPS, multi-format, commercial license.
+      - name: Professional
+        description: 1M req/mo, $49.99/mo, batch endpoint enabled.
+      - name: Business
+        description: 3M req/mo, $99.99/mo.
+      - name: Enterprise / Platinum
+        description: Custom volume + SLA + dedicated account team.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
