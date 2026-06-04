@@ -1,0 +1,138 @@
+arazzo: 1.0.1
+info:
+  title: positionstack Geocode with Confidence Branch
+  summary: Forward geocode an address and branch on the match confidence to either enrich or re-verify the result.
+  description: >-
+    A quality-gated geocoding flow that forward geocodes an address and then
+    branches on the confidence score of the best match. When the match is
+    confident it enriches the same location with country and timezone module
+    data to build a fuller place profile; when the match is weak it reverse
+    geocodes the returned coordinates to confirm what positionstack actually
+    resolved before the result is trusted. Every step spells out its request
+    inline - including the access_key query parameter required by the API - so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: positionstackApi
+  url: ../openapi/positionstack-openapi.yml
+  type: openapi
+workflows:
+- workflowId: geocode-confidence-branch
+  summary: Forward geocode then branch on confidence to enrich a strong match or re-verify a weak one.
+  description: >-
+    Forward geocodes the supplied address, inspects the best match's confidence
+    score, and routes high-confidence matches to a module-enriched lookup while
+    routing low-confidence matches to a reverse-geocode verification of the
+    returned coordinates.
+  inputs:
+    type: object
+    required:
+    - accessKey
+    - query
+    properties:
+      accessKey:
+        type: string
+        description: Your positionstack API access key.
+      query:
+        type: string
+        description: The address, place name, or location string to geocode.
+      confidenceThreshold:
+        type: number
+        description: Minimum confidence (0.0-1.0) for a match to be treated as high confidence.
+        default: 0.8
+  steps:
+  - stepId: forwardLookup
+    description: >-
+      Forward geocode the supplied address and capture the best match's
+      coordinates, confidence, and label.
+    operationId: forwardGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latitude: $response.body#/data/0/latitude
+      longitude: $response.body#/data/0/longitude
+      confidence: $response.body#/data/0/confidence
+      label: $response.body#/data/0/label
+    onSuccess:
+    - name: highConfidence
+      type: goto
+      stepId: enrichMatch
+      criteria:
+      - context: $response.body
+        condition: $.data[0].confidence >= 0.8
+        type: jsonpath
+    - name: lowConfidence
+      type: goto
+      stepId: reverseConfirm
+      criteria:
+      - context: $response.body
+        condition: $.data[0].confidence < 0.8
+        type: jsonpath
+  - stepId: enrichMatch
+    description: >-
+      Re-run forward geocoding for the confident match with the country and
+      timezone modules enabled to build a richer place profile.
+    operationId: forwardGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: limit
+      in: query
+      value: 1
+    - name: country_module
+      in: query
+      value: 1
+    - name: timezone_module
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      label: $response.body#/data/0/label
+      countryName: $response.body#/data/0/country
+      timezone: $response.body#/data/0/timezone_module/name
+    onSuccess:
+    - name: enriched
+      type: end
+  - stepId: reverseConfirm
+    description: >-
+      Reverse geocode the coordinates from the weak forward match to confirm the
+      address positionstack actually resolved to those coordinates.
+    operationId: reverseGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $steps.forwardLookup.outputs.latitude,$steps.forwardLookup.outputs.longitude
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      confirmedLabel: $response.body#/data/0/label
+      confirmedDistance: $response.body#/data/0/distance
+  outputs:
+    latitude: $steps.forwardLookup.outputs.latitude
+    longitude: $steps.forwardLookup.outputs.longitude
+    matchConfidence: $steps.forwardLookup.outputs.confidence
+    enrichedLabel: $steps.enrichMatch.outputs.label
+    enrichedTimezone: $steps.enrichMatch.outputs.timezone
+    confirmedLabel: $steps.reverseConfirm.outputs.confirmedLabel

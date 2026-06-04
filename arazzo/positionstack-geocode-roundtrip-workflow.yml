@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: positionstack Geocode Roundtrip
+  summary: Forward geocode an address, then reverse geocode the resulting coordinates to verify the match.
+  description: >-
+    A geocoding roundtrip that converts a free-form address into coordinates and
+    then converts those coordinates back into a structured address. The first
+    step resolves the supplied query string into a latitude/longitude pair and a
+    confidence score, and the second step feeds those coordinates straight back
+    into reverse geocoding so the canonical, normalized label can be compared
+    against the original input. Every step spells out its request inline -
+    including the access_key query parameter required by the API - so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: positionstackApi
+  url: ../openapi/positionstack-openapi.yml
+  type: openapi
+workflows:
+- workflowId: geocode-roundtrip
+  summary: Forward geocode an address and reverse geocode the coordinates it returns.
+  description: >-
+    Resolves a free-form address string to coordinates with forward geocoding,
+    captures the best match's latitude and longitude, and then reverse geocodes
+    those coordinates to obtain the canonical address label for verification.
+  inputs:
+    type: object
+    required:
+    - accessKey
+    - query
+    properties:
+      accessKey:
+        type: string
+        description: Your positionstack API access key.
+      query:
+        type: string
+        description: The address, place name, or location string to geocode (e.g. "1600 Pennsylvania Ave NW, Washington DC").
+      country:
+        type: string
+        description: Optional ISO 3166 alpha-2 country code filter to constrain the forward lookup (e.g. "US").
+  steps:
+  - stepId: forwardLookup
+    description: >-
+      Forward geocode the supplied address string and capture the best result's
+      coordinates, confidence, and formatted label.
+    operationId: forwardGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: country
+      in: query
+      value: $inputs.country
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latitude: $response.body#/data/0/latitude
+      longitude: $response.body#/data/0/longitude
+      forwardLabel: $response.body#/data/0/label
+      forwardConfidence: $response.body#/data/0/confidence
+  - stepId: reverseVerify
+    description: >-
+      Reverse geocode the latitude/longitude returned by the forward lookup to
+      retrieve the canonical address label for comparison with the original
+      input.
+    operationId: reverseGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $steps.forwardLookup.outputs.latitude,$steps.forwardLookup.outputs.longitude
+    - name: limit
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reverseLabel: $response.body#/data/0/label
+      reverseDistance: $response.body#/data/0/distance
+      country: $response.body#/data/0/country
+  outputs:
+    latitude: $steps.forwardLookup.outputs.latitude
+    longitude: $steps.forwardLookup.outputs.longitude
+    forwardLabel: $steps.forwardLookup.outputs.forwardLabel
+    forwardConfidence: $steps.forwardLookup.outputs.forwardConfidence
+    reverseLabel: $steps.reverseVerify.outputs.reverseLabel
+    reverseDistance: $steps.reverseVerify.outputs.reverseDistance

@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: positionstack Reverse Geocode Enriched Place Profile
+  summary: Reverse geocode a coordinate pair with country, timezone, and sun modules to build a full place profile.
+  description: >-
+    Turns a bare latitude/longitude coordinate pair into a fully enriched place
+    profile. A single reverse-geocode call requests the country, timezone, and
+    sun add-on modules at once, so the result carries not just the structured
+    address but also ISO country metadata, the IANA timezone, and the day's
+    sunrise and sunset times for the location. Every step spells out its request
+    inline - including the access_key query parameter required by the API - so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: positionstackApi
+  url: ../openapi/positionstack-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reverse-enrich-place
+  summary: Reverse geocode coordinates and enrich them with country, timezone, and sun module data.
+  description: >-
+    Reverse geocodes a latitude/longitude pair with the country, timezone, and
+    sun modules enabled, producing a structured address plus country metadata,
+    timezone, and sunrise/sunset times for the location.
+  inputs:
+    type: object
+    required:
+    - accessKey
+    - latitude
+    - longitude
+    properties:
+      accessKey:
+        type: string
+        description: Your positionstack API access key.
+      latitude:
+        type: number
+        description: Latitude of the point to reverse geocode, in decimal degrees.
+      longitude:
+        type: number
+        description: Longitude of the point to reverse geocode, in decimal degrees.
+  steps:
+  - stepId: reverseEnrich
+    description: >-
+      Reverse geocode the supplied coordinate pair with the country, timezone,
+      and sun modules enabled, capturing the address and all enrichment data.
+    operationId: reverseGeocode
+    parameters:
+    - name: access_key
+      in: query
+      value: $inputs.accessKey
+    - name: query
+      in: query
+      value: $inputs.latitude,$inputs.longitude
+    - name: limit
+      in: query
+      value: 1
+    - name: country_module
+      in: query
+      value: 1
+    - name: timezone_module
+      in: query
+      value: 1
+    - name: sun_module
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      label: $response.body#/data/0/label
+      country: $response.body#/data/0/country
+      countryCode: $response.body#/data/0/country_code
+      locality: $response.body#/data/0/locality
+      region: $response.body#/data/0/region
+      capital: $response.body#/data/0/country_module/capital
+      timezone: $response.body#/data/0/timezone_module/name
+      gmtOffset: $response.body#/data/0/timezone_module/gmt_offset
+      sunrise: $response.body#/data/0/sun_module/rise/time
+      sunset: $response.body#/data/0/sun_module/set/time
+  outputs:
+    label: $steps.reverseEnrich.outputs.label
+    country: $steps.reverseEnrich.outputs.country
+    countryCode: $steps.reverseEnrich.outputs.countryCode
+    locality: $steps.reverseEnrich.outputs.locality
+    timezone: $steps.reverseEnrich.outputs.timezone
+    sunrise: $steps.reverseEnrich.outputs.sunrise
+    sunset: $steps.reverseEnrich.outputs.sunset

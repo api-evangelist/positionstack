@@ -65,6 +65,18 @@ apis:
       - type: RateLimits
         url: rate-limits/positionstack-rate-limits.yml
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/positionstack-geocode-confidence-branch-workflow.yml
+      name: positionstack Geocode with Confidence Branch
+      summary: Forward geocode an address and branch on the match confidence to either enrich or re-verify the result.
+    - url: arazzo/positionstack-geocode-roundtrip-workflow.yml
+      name: positionstack Geocode Roundtrip
+      summary: Forward geocode an address, then reverse geocode the resulting coordinates to verify the match.
+    - url: arazzo/positionstack-reverse-enrich-place-workflow.yml
+      name: positionstack Reverse Geocode Enriched Place Profile
+      summary: Reverse geocode a coordinate pair with country, timezone, and sun modules to build a full place profile.
   - type: Website
     url: https://positionstack.com/
   - type: Portal
