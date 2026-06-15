@@ -1,0 +1,1537 @@
+{
+  "info": {
+    "_postman_id": "aa4410df-aa5d-4b5e-8d6e-0d8130bef615",
+    "name": "positionstack",
+    "description": "Forward and Reverse Batch Geocoding REST API by positionstack (apilayer).\nConvert addresses to coordinates (forward geocoding) and coordinates to addresses\n(reverse geocoding). Supports batch requests, multiple output formats\n(JSON, XML, GeoJSON), 2+ billion global places, and add-on modules for timezone,\nbounding box, country, and sun (sunrise/sunset) data.\n\n\nContact Support:\n Name: positionstack Support\n Email: support@positionstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:12.000Z",
+    "updatedAt": "2026-06-05T15:14:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa4410df-aa5d-4b5e-8d6e-0d8130bef615"
+  },
+  "item": [
+    {
+      "name": "forward",
+      "item": [
+        {
+          "name": "Forward Geocode an Address",
+          "id": "7a99d90e-6226-42d6-a367-f4ae87abcf9a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forward?access_key=<string>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forward"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Your positionstack API access key.",
+                  "key": "access_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results by region or state name.",
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "description": "Two-letter ISO 639-1 language code for localized results.",
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                  "key": "fields",
+                  "value": "all"
+                },
+                {
+                  "description": "Response output format.",
+                  "key": "output",
+                  "value": "json"
+                },
+                {
+                  "description": "JSONP callback function name (JSON output only).",
+                  "key": "callback",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                  "key": "country_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                  "key": "sun_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                  "key": "timezone_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                  "key": "bbox_module",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Convert one or more location strings (street, city, place name, postal code)\ninto geographic coordinates and structured address data. Supply one or more\ncomma-separated queries to perform a batch request (Professional plan and above).\n"
+          },
+          "response": [
+            {
+              "id": "75b42575-9fb8-4324-9603-16e6608a2db2",
+              "name": "Successful geocoding response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"street\": \"<string>\",\n      \"confidence\": \"<float>\",\n      \"region\": \"<string>\",\n      \"region_code\": \"<string>\",\n      \"county\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"neighbourhood\": \"<string>\",\n      \"country\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"continent\": \"<string>\",\n      \"label\": \"<string>\",\n      \"map_url\": \"<uri>\",\n      \"distance\": \"<float>\",\n      \"bbox_module\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"country_module\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"common_name\": \"<string>\",\n        \"official_name\": \"<string>\",\n        \"capital\": \"<string>\",\n        \"flag\": \"<uri>\",\n        \"area\": \"<float>\",\n        \"landlocked\": \"<boolean>\",\n        \"independent\": \"<boolean>\",\n        \"global\": {\n          \"alpha2\": \"<string>\",\n          \"alpha3\": \"<string>\",\n          \"numeric_code\": \"<string>\",\n          \"region\": \"<string>\",\n          \"subregion\": \"<string>\",\n          \"region_code\": \"<string>\",\n          \"subregion_code\": \"<string>\",\n          \"world_region\": \"<string>\",\n          \"continent_name\": \"<string>\",\n          \"continent_code\": \"<string>\"\n        },\n        \"dial\": {\n          \"calling_code\": \"<string>\",\n          \"national_prefix\": \"<string>\",\n          \"international_prefix\": \"<string>\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          },\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          }\n        ],\n        \"languages\": {\n          \"aliqua_b\": \"<string>\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"<string>\",\n        \"abbreviation\": \"<string>\",\n        \"offset_sec\": \"<integer>\",\n        \"offset_string\": \"<string>\",\n        \"gmt_offset\": \"<integer>\",\n        \"is_dst\": \"<boolean>\"\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"set\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"transit\": \"<integer>\"\n      }\n    },\n    {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"street\": \"<string>\",\n      \"confidence\": \"<float>\",\n      \"region\": \"<string>\",\n      \"region_code\": \"<string>\",\n      \"county\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"neighbourhood\": \"<string>\",\n      \"country\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"continent\": \"<string>\",\n      \"label\": \"<string>\",\n      \"map_url\": \"<uri>\",\n      \"distance\": \"<float>\",\n      \"bbox_module\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"country_module\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"common_name\": \"<string>\",\n        \"official_name\": \"<string>\",\n        \"capital\": \"<string>\",\n        \"flag\": \"<uri>\",\n        \"area\": \"<float>\",\n        \"landlocked\": \"<boolean>\",\n        \"independent\": \"<boolean>\",\n        \"global\": {\n          \"alpha2\": \"<string>\",\n          \"alpha3\": \"<string>\",\n          \"numeric_code\": \"<string>\",\n          \"region\": \"<string>\",\n          \"subregion\": \"<string>\",\n          \"region_code\": \"<string>\",\n          \"subregion_code\": \"<string>\",\n          \"world_region\": \"<string>\",\n          \"continent_name\": \"<string>\",\n          \"continent_code\": \"<string>\"\n        },\n        \"dial\": {\n          \"calling_code\": \"<string>\",\n          \"national_prefix\": \"<string>\",\n          \"international_prefix\": \"<string>\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          },\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          }\n        ],\n        \"languages\": {\n          \"euf89\": \"<string>\",\n          \"indce\": \"<string>\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"<string>\",\n        \"abbreviation\": \"<string>\",\n        \"offset_sec\": \"<integer>\",\n        \"offset_string\": \"<string>\",\n        \"gmt_offset\": \"<integer>\",\n        \"is_dst\": \"<boolean>\"\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"set\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"transit\": \"<integer>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-75b42575-9fb8-4324-9603-16e6608a2db2"
+            },
+            {
+              "id": "5bba39c3-e800-48a3-b1df-cdb3396f7a45",
+              "name": "Missing or invalid access_key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-5bba39c3-e800-48a3-b1df-cdb3396f7a45"
+            },
+            {
+              "id": "07ae6d91-0594-469b-b54b-5a7af56d1d8d",
+              "name": "Subscription does not permit this request (e.g. HTTPS or batch on Free plan).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-07ae6d91-0594-469b-b54b-5a7af56d1d8d"
+            },
+            {
+              "id": "500a641f-8579-4813-b0d1-61dde2edee13",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-500a641f-8579-4813-b0d1-61dde2edee13"
+            },
+            {
+              "id": "766ba431-5e4e-4c75-9e3c-003f58c93ba4",
+              "name": "Monthly request quota exhausted or rate limit exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-766ba431-5e4e-4c75-9e3c-003f58c93ba4"
+            },
+            {
+              "id": "e9cfe58e-0d1f-4a42-9bde-a4c622c1c0f8",
+              "name": "An unexpected server-side error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forward?access_key=<API Key>&query=<string>&country=<string>&region=<string>&bbox=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-e9cfe58e-0d1f-4a42-9bde-a4c622c1c0f8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:14:13.000Z",
+          "updatedAt": "2026-06-05T15:14:13.000Z",
+          "uid": "35240-7a99d90e-6226-42d6-a367-f4ae87abcf9a"
+        }
+      ],
+      "id": "64956e84-1ff1-4932-8528-e17ca3375840",
+      "createdAt": "2026-06-05T15:14:13.000Z",
+      "updatedAt": "2026-06-05T15:14:13.000Z",
+      "uid": "35240-64956e84-1ff1-4932-8528-e17ca3375840"
+    },
+    {
+      "name": "reverse",
+      "item": [
+        {
+          "name": "Reverse Geocode Coordinates",
+          "id": "bcf3fa38-670f-46cc-a63d-7e899984d3d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reverse?access_key=<string>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reverse"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Your positionstack API access key.",
+                  "key": "access_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                  "key": "query",
+                  "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                },
+                {
+                  "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results by region or state name.",
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "description": "Two-letter ISO 639-1 language code for localized results.",
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                  "key": "fields",
+                  "value": "all"
+                },
+                {
+                  "description": "Response output format.",
+                  "key": "output",
+                  "value": "json"
+                },
+                {
+                  "description": "JSONP callback function name (JSON output only).",
+                  "key": "callback",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                  "key": "country_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                  "key": "sun_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                  "key": "timezone_module",
+                  "value": "0"
+                },
+                {
+                  "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                  "key": "bbox_module",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Convert one or more latitude/longitude coordinate pairs into structured\naddress data. Supply one or more semicolon-separated coordinate pairs\n(or comma-separated batched queries) to perform a batch request\n(Professional plan and above).\n"
+          },
+          "response": [
+            {
+              "id": "7475fc0c-9b81-4c05-9704-0fc0978ed74b",
+              "name": "Successful reverse geocoding response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"street\": \"<string>\",\n      \"confidence\": \"<float>\",\n      \"region\": \"<string>\",\n      \"region_code\": \"<string>\",\n      \"county\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"neighbourhood\": \"<string>\",\n      \"country\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"continent\": \"<string>\",\n      \"label\": \"<string>\",\n      \"map_url\": \"<uri>\",\n      \"distance\": \"<float>\",\n      \"bbox_module\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"country_module\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"common_name\": \"<string>\",\n        \"official_name\": \"<string>\",\n        \"capital\": \"<string>\",\n        \"flag\": \"<uri>\",\n        \"area\": \"<float>\",\n        \"landlocked\": \"<boolean>\",\n        \"independent\": \"<boolean>\",\n        \"global\": {\n          \"alpha2\": \"<string>\",\n          \"alpha3\": \"<string>\",\n          \"numeric_code\": \"<string>\",\n          \"region\": \"<string>\",\n          \"subregion\": \"<string>\",\n          \"region_code\": \"<string>\",\n          \"subregion_code\": \"<string>\",\n          \"world_region\": \"<string>\",\n          \"continent_name\": \"<string>\",\n          \"continent_code\": \"<string>\"\n        },\n        \"dial\": {\n          \"calling_code\": \"<string>\",\n          \"national_prefix\": \"<string>\",\n          \"international_prefix\": \"<string>\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          },\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          }\n        ],\n        \"languages\": {\n          \"aliqua_b\": \"<string>\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"<string>\",\n        \"abbreviation\": \"<string>\",\n        \"offset_sec\": \"<integer>\",\n        \"offset_string\": \"<string>\",\n        \"gmt_offset\": \"<integer>\",\n        \"is_dst\": \"<boolean>\"\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"set\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"transit\": \"<integer>\"\n      }\n    },\n    {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"street\": \"<string>\",\n      \"confidence\": \"<float>\",\n      \"region\": \"<string>\",\n      \"region_code\": \"<string>\",\n      \"county\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"neighbourhood\": \"<string>\",\n      \"country\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"continent\": \"<string>\",\n      \"label\": \"<string>\",\n      \"map_url\": \"<uri>\",\n      \"distance\": \"<float>\",\n      \"bbox_module\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"country_module\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"common_name\": \"<string>\",\n        \"official_name\": \"<string>\",\n        \"capital\": \"<string>\",\n        \"flag\": \"<uri>\",\n        \"area\": \"<float>\",\n        \"landlocked\": \"<boolean>\",\n        \"independent\": \"<boolean>\",\n        \"global\": {\n          \"alpha2\": \"<string>\",\n          \"alpha3\": \"<string>\",\n          \"numeric_code\": \"<string>\",\n          \"region\": \"<string>\",\n          \"subregion\": \"<string>\",\n          \"region_code\": \"<string>\",\n          \"subregion_code\": \"<string>\",\n          \"world_region\": \"<string>\",\n          \"continent_name\": \"<string>\",\n          \"continent_code\": \"<string>\"\n        },\n        \"dial\": {\n          \"calling_code\": \"<string>\",\n          \"national_prefix\": \"<string>\",\n          \"international_prefix\": \"<string>\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          },\n          {\n            \"symbol\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"numeric\": \"<string>\",\n            \"minor_unit\": \"<string>\"\n          }\n        ],\n        \"languages\": {\n          \"euf89\": \"<string>\",\n          \"indce\": \"<string>\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"<string>\",\n        \"abbreviation\": \"<string>\",\n        \"offset_sec\": \"<integer>\",\n        \"offset_string\": \"<string>\",\n        \"gmt_offset\": \"<integer>\",\n        \"is_dst\": \"<boolean>\"\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"set\": {\n          \"time\": \"<integer>\",\n          \"astronomical\": \"<integer>\",\n          \"civil\": \"<integer>\",\n          \"nautical\": \"<integer>\"\n        },\n        \"transit\": \"<integer>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-7475fc0c-9b81-4c05-9704-0fc0978ed74b"
+            },
+            {
+              "id": "8e4656d6-2cac-4166-b5ec-e3720e94bc38",
+              "name": "Missing or invalid access_key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-8e4656d6-2cac-4166-b5ec-e3720e94bc38"
+            },
+            {
+              "id": "14b32783-d095-436b-9125-76413f20bd41",
+              "name": "Subscription does not permit this request (e.g. HTTPS or batch on Free plan).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-14b32783-d095-436b-9125-76413f20bd41"
+            },
+            {
+              "id": "70b6448f-3ad3-41a1-9e67-8ee4fba0631a",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-70b6448f-3ad3-41a1-9e67-8ee4fba0631a"
+            },
+            {
+              "id": "fc690512-f4dd-41cf-a5fa-191308bb885b",
+              "name": "Monthly request quota exhausted or rate limit exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-fc690512-f4dd-41cf-a5fa-191308bb885b"
+            },
+            {
+              "id": "22a67a65-3034-435c-b86f-0b465cf17fa5",
+              "name": "An unexpected server-side error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?access_key=<API Key>&query=4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903&country=<string>&region=<string>&limit=10&language=<string>&fields=all&output=json&callback=<string>&country_module=0&sun_module=0&timezone_module=0&bbox_module=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Your positionstack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n",
+                      "key": "query",
+                      "value": "4,-8.5288509102;-39315985,30568.3924520;3.10185422039,344268.5829903"
+                    },
+                    {
+                      "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by region or state name.",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results returned. Defaults to 10, maximum 80.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Two-letter ISO 639-1 language code for localized results.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n",
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "description": "Response output format.",
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "description": "JSONP callback function name (JSON output only).",
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n",
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n",
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n",
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Set to `1` to include the bounding box coordinates of each returned result.\n",
+                      "key": "bbox_module",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"info\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:14:13.000Z",
+              "updatedAt": "2026-06-05T15:14:13.000Z",
+              "uid": "35240-22a67a65-3034-435c-b86f-0b465cf17fa5"
+            }
+          ],
+          "createdAt": "2026-06-05T15:14:13.000Z",
+          "updatedAt": "2026-06-05T15:14:13.000Z",
+          "uid": "35240-bcf3fa38-670f-46cc-a63d-7e899984d3d3"
+        }
+      ],
+      "id": "889c2bb0-589b-4067-b1e6-81080f1c5cfe",
+      "createdAt": "2026-06-05T15:14:13.000Z",
+      "updatedAt": "2026-06-05T15:14:13.000Z",
+      "uid": "35240-889c2bb0-589b-4067-b1e6-81080f1c5cfe"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.positionstack.com/v1"
+    }
+  ]
+}

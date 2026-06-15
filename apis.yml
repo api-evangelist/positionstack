@@ -1,10 +1,9 @@
 aid: positionstack
 name: positionstack
 description: >-
-  Forward and Reverse Batch Geocoding REST API by positionstack (an apilayer
-  product, owned by Idera, Inc.). Convert addresses to coordinates and
-  coordinates to addresses across 2+ billion global places, with optional
-  data modules for country, timezone, sun, and bounding-box enrichment.
+  Forward and Reverse Batch Geocoding REST API by positionstack (an apilayer product, owned by Idera, Inc.). Convert
+  addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional data modules for
+  country, timezone, sun, and bounding-box enrichment.
 url: https://positionstack.com/
 image: https://positionstack.com/site_images/positionstack_square.png
 specificationVersion: '0.20'
@@ -26,9 +25,8 @@ tags:
 apis:
   - name: positionstack Geocoding API
     description: >-
-      REST API providing forward geocoding (address to coordinates), reverse
-      geocoding (coordinates to address), and batch lookups, with optional
-      enrichment modules for country, timezone, sun, and bounding box.
+      REST API providing forward geocoding (address to coordinates), reverse geocoding (coordinates to address), and
+      batch lookups, with optional enrichment modules for country, timezone, sun, and bounding box.
     humanURL: https://positionstack.com/
     baseURL: https://api.positionstack.com/v1
     tags:
@@ -65,18 +63,20 @@ apis:
       - type: RateLimits
         url: rate-limits/positionstack-rate-limits.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/positionstack/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/positionstack-geocode-confidence-branch-workflow.yml
-      name: positionstack Geocode with Confidence Branch
-      summary: Forward geocode an address and branch on the match confidence to either enrich or re-verify the result.
-    - url: arazzo/positionstack-geocode-roundtrip-workflow.yml
-      name: positionstack Geocode Roundtrip
-      summary: Forward geocode an address, then reverse geocode the resulting coordinates to verify the match.
-    - url: arazzo/positionstack-reverse-enrich-place-workflow.yml
-      name: positionstack Reverse Geocode Enriched Place Profile
-      summary: Reverse geocode a coordinate pair with country, timezone, and sun modules to build a full place profile.
+      - url: arazzo/positionstack-geocode-confidence-branch-workflow.yml
+        name: positionstack Geocode with Confidence Branch
+        summary: Forward geocode an address and branch on the match confidence to either enrich or re-verify the result.
+      - url: arazzo/positionstack-geocode-roundtrip-workflow.yml
+        name: positionstack Geocode Roundtrip
+        summary: Forward geocode an address, then reverse geocode the resulting coordinates to verify the match.
+      - url: arazzo/positionstack-reverse-enrich-place-workflow.yml
+        name: positionstack Reverse Geocode Enriched Place Profile
+        summary: Reverse geocode a coordinate pair with country, timezone, and sun modules to build a full place profile.
   - type: Website
     url: https://positionstack.com/
   - type: Portal
@@ -117,14 +117,6 @@ common:
     url: rules/positionstack-rules.yml
   - type: Vocabulary
     url: vocabulary/positionstack-vocabulary.yml
-  - type: NaftikoCapability
-    url: capabilities/shared/positionstack-geocoding.yaml
-  - type: NaftikoCapability
-    url: capabilities/address-to-coordinates.yaml
-  - type: NaftikoCapability
-    url: capabilities/coordinates-to-address.yaml
-  - type: NaftikoCapability
-    url: capabilities/bulk-address-cleansing.yaml
   - type: Features
     data:
       - name: Forward Geocoding

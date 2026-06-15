@@ -1,80 +1,87 @@
-# positionstack
+# positionstack (positionstack)
 
-Forward and Reverse Batch Geocoding REST API by **positionstack** (an apilayer product, owned by Idera, Inc.). Convert addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional enrichment modules for country, timezone, sun, and bounding box.
+Forward and Reverse Batch Geocoding REST API by positionstack (an apilayer product, owned by Idera, Inc.). Convert addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional data modules for country, timezone, sun, and bounding-box enrichment.
 
-- **Website:** https://positionstack.com/
-- **Documentation:** https://docs.apilayer.com/positionstack/docs/api-documentation
-- **Status:** https://positionstack.com/api-status
-- **GitHub:** https://github.com/apilayer/positionstack (archived reference repo)
-- **APIs.yml:** [apis.yml](apis.yml)
-
-## Type
-
-- **x-type:** company
-- **x-tier:** 3 (bulk-registered from public-apis, enriched 2026-05-29)
-- **source:** [public-apis/public-apis](https://github.com/public-apis/public-apis) - category: Geocoding
-
-## APIs
-
-### positionstack Geocoding API
-
-REST API providing forward geocoding (address to coordinates), reverse geocoding (coordinates to address), and batch lookups with optional enrichment modules.
-
-- **Base URL:** `https://api.positionstack.com/v1`
-- **Auth:** `access_key` query parameter
-- **Endpoints:** `GET /forward`, `GET /reverse`
-- **Output formats:** JSON, XML, GeoJSON
-
-## Artifacts
-
-| Type | File |
-|---|---|
-| OpenAPI | [openapi/positionstack-openapi.yml](openapi/positionstack-openapi.yml) |
-| JSON Schema (Location) | [json-schema/positionstack-location-schema.json](json-schema/positionstack-location-schema.json) |
-| JSON Schema (Error) | [json-schema/positionstack-error-schema.json](json-schema/positionstack-error-schema.json) |
-| JSON Structure | [json-structure/positionstack-location-structure.json](json-structure/positionstack-location-structure.json) |
-| JSON-LD Context | [json-ld/positionstack-context.jsonld](json-ld/positionstack-context.jsonld) |
-| Spectral Rules | [rules/positionstack-rules.yml](rules/positionstack-rules.yml) |
-| Vocabulary | [vocabulary/positionstack-vocabulary.yml](vocabulary/positionstack-vocabulary.yml) |
-| Plans / Pricing | [plans/positionstack-plans-pricing.yml](plans/positionstack-plans-pricing.yml) |
-| Rate Limits | [rate-limits/positionstack-rate-limits.yml](rate-limits/positionstack-rate-limits.yml) |
-| FinOps | [finops/positionstack-finops.yml](finops/positionstack-finops.yml) |
-
-### Examples
-
-- [Forward geocode](examples/positionstack-forward-geocode-example.json)
-- [Reverse geocode](examples/positionstack-reverse-geocode-example.json)
-- [Batch forward](examples/positionstack-batch-forward-example.json)
-- [Error envelope](examples/positionstack-error-example.json)
-
-### Capabilities
-
-- [Shared geocoding capability](capabilities/shared/positionstack-geocoding.yaml)
-- [Address to coordinates](capabilities/address-to-coordinates.yaml)
-- [Coordinates to address](capabilities/coordinates-to-address.yaml)
-- [Bulk address cleansing](capabilities/bulk-address-cleansing.yaml)
-
-## Plans
-
-| Plan | Monthly | Yearly (eff. /mo) | Requests/mo | Overage |
-|---|---|---|---|---|
-| Free | $0 | - | 100 | n/a |
-| Basic | $9.99 | $8.99 | 100,000 | $0.0003996/req |
-| Professional | $49.99 | $43.99 | 1,000,000 | $0.00019996/req |
-| Business | $99.99 | $84.99 | 3,000,000 | $0.00013332/req |
-| Enterprise | Custom | - | Custom | Custom |
-
-Batch endpoint requires Professional or above. Overage notifications at 75%, 90%, 100%.
+**APIs.json:** [https://positionstack.com/](https://positionstack.com/)
 
 ## Tags
 
-Geocoding, Reverse Geocoding, Maps, Location, Address Validation, apilayer, Public APIs
+- Geocoding
+- Reverse Geocoding
+- Maps
+- Location
+- Address Validation
+- apilayer
+- Public APIs
 
 ## Timestamps
 
 - **Created:** 2026-05-28
 - **Modified:** 2026-05-29
 
+## APIs
+
+### positionstack Geocoding API
+
+REST API providing forward geocoding (address to coordinates), reverse geocoding (coordinates to address), and batch lookups, with optional enrichment modules for country, timezone, sun, and bounding box.
+
+- **Human URL:** [https://positionstack.com/](https://positionstack.com/)
+- **Base URL:** `https://api.positionstack.com/v1`
+
+#### Tags
+
+- Geocoding
+- Reverse Geocoding
+- Batch Geocoding
+
+#### Properties
+
+- [Documentation](https://docs.apilayer.com/positionstack/docs/api-documentation)
+- [API Reference](https://docs.apilayer.com/positionstack/docs/api-documentation)
+- [Quickstart](https://docs.apilayer.com/positionstack/docs/getting-started)
+- [Authentication](https://docs.apilayer.com/positionstack/docs/api-documentation)
+- [OpenAPI](openapi/positionstack-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/positionstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/positionstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/positionstack-location-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/positionstack-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/positionstack-location-structure.json)
+- [J S O N- L D](json-ld/positionstack-context.jsonld)
+- [Example](examples/positionstack-forward-geocode-example.json)
+- [Example](examples/positionstack-reverse-geocode-example.json)
+- [Example](examples/positionstack-batch-forward-example.json)
+- [Example](examples/positionstack-error-example.json)
+- [Rate Limits](rate-limits/positionstack-rate-limits.yml)
+
+## Common Properties
+
+- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
+- [Website](https://positionstack.com/)
+- [Portal](https://positionstack.com/dashboard)
+- [Sign Up](https://positionstack.com/signup/free)
+- [Pricing](https://positionstack.com/product)
+- [Documentation](https://docs.apilayer.com/positionstack/docs/api-documentation)
+- [Getting Started](https://docs.apilayer.com/positionstack/docs/getting-started)
+- [Blog](https://blog.apilayer.com/)
+- [Status Page](https://positionstack.com/api-status)
+- [Support](mailto:support@positionstack.com)
+- [F A Q](https://positionstack.com/faq)
+- [Terms of Service](https://www.ideracorp.com/legal/APILayer)
+- [Privacy Policy](https://www.ideracorp.com/Legal/PrivacyPolicy)
+- [GitHub Organization](https://github.com/apilayer)
+- [GitHub Repository](https://github.com/apilayer/positionstack)
+- [Public APIs Listing](https://github.com/public-apis/public-apis)
+- [Plans](plans/positionstack-plans-pricing.yml)
+- [Rate Limits](rate-limits/positionstack-rate-limits.yml)
+- [Fin Ops](finops/positionstack-finops.yml)
+- [Spectral Rules](rules/positionstack-rules.yml)
+- [Vocabulary](vocabulary/positionstack-vocabulary.yml)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
+- [Solutions](undefined)
+
 ## Maintainers
 
-- **Kin Lane** - kin@apievangelist.com
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com

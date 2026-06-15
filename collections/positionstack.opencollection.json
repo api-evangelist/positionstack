@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "positionstack",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "access_key",
+      "value": "{{access_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forward Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward Geocode an Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.positionstack.com/v1/forward",
+            "params": [
+              {
+                "name": "access_key",
+                "value": "",
+                "type": "query",
+                "description": "Your positionstack API access key."
+              },
+              {
+                "name": "query",
+                "value": "1600 Pennsylvania Ave NW, Washington DC",
+                "type": "query",
+                "description": "The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n"
+              },
+              {
+                "name": "country",
+                "value": "US,CA",
+                "type": "query",
+                "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n"
+              },
+              {
+                "name": "region",
+                "value": "California",
+                "type": "query",
+                "description": "Filter results by region or state name."
+              },
+              {
+                "name": "bbox",
+                "value": "-74.2591,40.4774,-73.7004,40.9176",
+                "type": "query",
+                "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results returned. Defaults to 10, maximum 80."
+              },
+              {
+                "name": "language",
+                "value": "en",
+                "type": "query",
+                "description": "Two-letter ISO 639-1 language code for localized results."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n"
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Response output format."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback function name (JSON output only)."
+              },
+              {
+                "name": "country_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n"
+              },
+              {
+                "name": "sun_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n"
+              },
+              {
+                "name": "timezone_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n"
+              },
+              {
+                "name": "bbox_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to include the bounding box coordinates of each returned result.\n"
+              }
+            ]
+          },
+          "docs": "Convert one or more location strings (street, city, place name, postal code)\ninto geographic coordinates and structured address data. Supply one or more\ncomma-separated queries to perform a batch request (Professional plan and above).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reverse Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reverse Geocode Coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.positionstack.com/v1/reverse",
+            "params": [
+              {
+                "name": "access_key",
+                "value": "",
+                "type": "query",
+                "description": "Your positionstack API access key."
+              },
+              {
+                "name": "query",
+                "value": "40.7638435,-73.9729691",
+                "type": "query",
+                "description": "Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n"
+              },
+              {
+                "name": "country",
+                "value": "US,CA",
+                "type": "query",
+                "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n"
+              },
+              {
+                "name": "region",
+                "value": "California",
+                "type": "query",
+                "description": "Filter results by region or state name."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results returned. Defaults to 10, maximum 80."
+              },
+              {
+                "name": "language",
+                "value": "en",
+                "type": "query",
+                "description": "Two-letter ISO 639-1 language code for localized results."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n"
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Response output format."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback function name (JSON output only)."
+              },
+              {
+                "name": "country_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n"
+              },
+              {
+                "name": "sun_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n"
+              },
+              {
+                "name": "timezone_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n"
+              },
+              {
+                "name": "bbox_module",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to include the bounding box coordinates of each returned result.\n"
+              }
+            ]
+          },
+          "docs": "Convert one or more latitude/longitude coordinate pairs into structured\naddress data. Supply one or more semicolon-separated coordinate pairs\n(or comma-separated batched queries) to perform a batch request\n(Professional plan and above).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
