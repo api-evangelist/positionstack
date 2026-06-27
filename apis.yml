@@ -38,7 +38,7 @@ apis:
         url: https://docs.apilayer.com/positionstack/docs/api-documentation
       - type: APIReference
         url: https://docs.apilayer.com/positionstack/docs/api-documentation
-      - type: Quickstart
+      - type: GettingStarted
         url: https://docs.apilayer.com/positionstack/docs/getting-started
       - type: Authentication
         url: https://docs.apilayer.com/positionstack/docs/api-documentation
@@ -50,38 +50,35 @@ apis:
         url: json-schema/positionstack-error-schema.json
       - type: JSONStructure
         url: json-structure/positionstack-location-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/positionstack-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/positionstack-forward-geocode-example.json
-      - type: Example
+      - type: Examples
         url: examples/positionstack-reverse-geocode-example.json
-      - type: Example
+      - type: Examples
         url: examples/positionstack-batch-forward-example.json
-      - type: Example
+      - type: Examples
         url: examples/positionstack-error-example.json
       - type: RateLimits
         url: rate-limits/positionstack-rate-limits.yml
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/positionstack/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/positionstack-geocode-confidence-branch-workflow.yml
-        name: positionstack Geocode with Confidence Branch
-        summary: Forward geocode an address and branch on the match confidence to either enrich or re-verify the result.
-      - url: arazzo/positionstack-geocode-roundtrip-workflow.yml
-        name: positionstack Geocode Roundtrip
-        summary: Forward geocode an address, then reverse geocode the resulting coordinates to verify the match.
-      - url: arazzo/positionstack-reverse-enrich-place-workflow.yml
-        name: positionstack Reverse Geocode Enriched Place Profile
-        summary: Reverse geocode a coordinate pair with country, timezone, and sun modules to build a full place profile.
+  - type: Arazzo
+    url: arazzo/positionstack-geocode-confidence-branch-workflow.yml
+    name: positionstack Geocode with Confidence Branch
+  - type: Arazzo
+    url: arazzo/positionstack-geocode-roundtrip-workflow.yml
+    name: positionstack Geocode Roundtrip
+  - type: Arazzo
+    url: arazzo/positionstack-reverse-enrich-place-workflow.yml
+    name: positionstack Reverse Geocode Enriched Place Profile
   - type: Website
     url: https://positionstack.com/
   - type: Portal
     url: https://positionstack.com/dashboard
-  - type: SignUp
+  - type: Signup
     url: https://positionstack.com/signup/free
   - type: Pricing
     url: https://positionstack.com/product
