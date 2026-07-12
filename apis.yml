@@ -63,6 +63,10 @@ apis:
       - type: RateLimits
         url: rate-limits/positionstack-rate-limits.yml
 common:
+  - type: DomainSecurity
+    url: security/positionstack-domain-security.yml
+  - type: Authentication
+    url: authentication/positionstack-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/positionstack/overview
   - type: Arazzo
