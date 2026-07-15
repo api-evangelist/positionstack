@@ -63,6 +63,8 @@ apis:
       - type: RateLimits
         url: rate-limits/positionstack-rate-limits.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/positionstack-agentic-access.yml
   - type: DomainSecurity
     url: security/positionstack-domain-security.yml
   - type: Authentication
