@@ -5,6 +5,19 @@ description: >-
   addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional data modules for
   country, timezone, sun, and bounding-box enrichment.
 url: https://positionstack.com/
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://positionstack.com/site_images/positionstack_square.png
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -23,45 +36,116 @@ tags:
   - apilayer
   - Public APIs
 apis:
-  - name: positionstack Geocoding API
-    description: >-
-      REST API providing forward geocoding (address to coordinates), reverse geocoding (coordinates to address), and
-      batch lookups, with optional enrichment modules for country, timezone, sun, and bounding box.
-    humanURL: https://positionstack.com/
-    baseURL: https://api.positionstack.com/v1
-    tags:
-      - Geocoding
-      - Reverse Geocoding
-      - Batch Geocoding
-    properties:
-      - type: Documentation
-        url: https://docs.apilayer.com/positionstack/docs/api-documentation
-      - type: APIReference
-        url: https://docs.apilayer.com/positionstack/docs/api-documentation
-      - type: GettingStarted
-        url: https://docs.apilayer.com/positionstack/docs/getting-started
-      - type: Authentication
-        url: https://docs.apilayer.com/positionstack/docs/api-documentation
-      - type: OpenAPI
-        url: openapi/positionstack-openapi.yml
-      - type: JSONSchema
-        url: json-schema/positionstack-location-schema.json
-      - type: JSONSchema
-        url: json-schema/positionstack-error-schema.json
-      - type: JSONStructure
-        url: json-structure/positionstack-location-structure.json
-      - type: JSONLD
-        url: json-ld/positionstack-context.jsonld
-      - type: Examples
-        url: examples/positionstack-forward-geocode-example.json
-      - type: Examples
-        url: examples/positionstack-reverse-geocode-example.json
-      - type: Examples
-        url: examples/positionstack-batch-forward-example.json
-      - type: Examples
-        url: examples/positionstack-error-example.json
-      - type: RateLimits
-        url: rate-limits/positionstack-rate-limits.yml
+- aid: positionstack:positionstack-batch-geocoding-api
+  name: positionstack Batch Geocoding API
+  description: >-
+    Run multiple forward or reverse geocoding lookups in a single request (Professional plan and above).
+  humanURL: https://positionstack.com/
+  baseURL: https://api.positionstack.com/v1
+  tags:
+  - Batch Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/positionstack-batch-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: APIReference
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: GettingStarted
+    url: https://docs.apilayer.com/positionstack/docs/getting-started
+  - type: Authentication
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: JSONSchema
+    url: json-schema/positionstack-location-schema.json
+  - type: JSONSchema
+    url: json-schema/positionstack-error-schema.json
+  - type: JSONStructure
+    url: json-structure/positionstack-location-structure.json
+  - type: JSONLD
+    url: json-ld/positionstack-context.jsonld
+  - type: Examples
+    url: examples/positionstack-forward-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-reverse-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-batch-forward-example.json
+  - type: Examples
+    url: examples/positionstack-error-example.json
+  - type: RateLimits
+    url: rate-limits/positionstack-rate-limits.yml
+- aid: positionstack:positionstack-forward-geocoding-api
+  name: positionstack Forward Geocoding API
+  description: Convert addresses, place names, or partial location strings into geographic coordinates.
+  humanURL: https://positionstack.com/
+  baseURL: https://api.positionstack.com/v1
+  tags:
+  - Forward Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/positionstack-forward-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: APIReference
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: GettingStarted
+    url: https://docs.apilayer.com/positionstack/docs/getting-started
+  - type: Authentication
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: JSONSchema
+    url: json-schema/positionstack-location-schema.json
+  - type: JSONSchema
+    url: json-schema/positionstack-error-schema.json
+  - type: JSONStructure
+    url: json-structure/positionstack-location-structure.json
+  - type: JSONLD
+    url: json-ld/positionstack-context.jsonld
+  - type: Examples
+    url: examples/positionstack-forward-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-reverse-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-batch-forward-example.json
+  - type: Examples
+    url: examples/positionstack-error-example.json
+  - type: RateLimits
+    url: rate-limits/positionstack-rate-limits.yml
+- aid: positionstack:positionstack-reverse-geocoding-api
+  name: positionstack Reverse Geocoding API
+  description: >-
+    Convert latitude/longitude coordinates into a full address with locality, region, and country.
+  humanURL: https://positionstack.com/
+  baseURL: https://api.positionstack.com/v1
+  tags:
+  - Reverse Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/positionstack-reverse-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: APIReference
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: GettingStarted
+    url: https://docs.apilayer.com/positionstack/docs/getting-started
+  - type: Authentication
+    url: https://docs.apilayer.com/positionstack/docs/api-documentation
+  - type: JSONSchema
+    url: json-schema/positionstack-location-schema.json
+  - type: JSONSchema
+    url: json-schema/positionstack-error-schema.json
+  - type: JSONStructure
+    url: json-structure/positionstack-location-structure.json
+  - type: JSONLD
+    url: json-ld/positionstack-context.jsonld
+  - type: Examples
+    url: examples/positionstack-forward-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-reverse-geocode-example.json
+  - type: Examples
+    url: examples/positionstack-batch-forward-example.json
+  - type: Examples
+    url: examples/positionstack-error-example.json
+  - type: RateLimits
+    url: rate-limits/positionstack-rate-limits.yml
 common:
   - type: AgenticAccess
     url: agentic-access/positionstack-agentic-access.yml
