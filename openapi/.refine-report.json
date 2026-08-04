@@ -1,0 +1,18 @@
+{
+  "provider": "positionstack",
+  "sources": [
+    "positionstack-batch-geocoding-api-openapi.yml",
+    "positionstack-forward-geocoding-api-openapi.yml",
+    "positionstack-reverse-geocoding-api-openapi.yml"
+  ],
+  "outputs": [
+    "positionstack-batch-geocoding-api-openapi.yml",
+    "positionstack-forward-geocoding-api-openapi.yml",
+    "positionstack-reverse-geocoding-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

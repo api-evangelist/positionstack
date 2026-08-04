@@ -1,0 +1,600 @@
+openapi: 3.0.3
+info:
+  title: positionstack
+  description: |
+    Forward and Reverse Batch Geocoding REST API by positionstack (apilayer).
+    Convert addresses to coordinates (forward geocoding) and coordinates to addresses
+    (reverse geocoding). Supports batch requests, multiple output formats
+    (JSON, XML, GeoJSON), 2+ billion global places, and add-on modules for timezone,
+    bounding box, country, and sun (sunrise/sunset) data.
+  version: "1.0.0"
+  contact:
+    name: positionstack Support
+    email: support@positionstack.com
+    url: https://positionstack.com/
+  license:
+    name: Commercial
+    url: https://www.ideracorp.com/legal/APILayer
+  termsOfService: https://www.ideracorp.com/legal/APILayer
+servers:
+  - url: https://api.positionstack.com/v1
+    description: Production API (HTTPS available on Basic plan and above)
+  - url: http://api.positionstack.com/v1
+    description: Production API (HTTP - Free plan)
+security:
+  - AccessKeyAuth: []
+tags:
+  - name: Forward Geocoding
+    description: Convert addresses, place names, or partial location strings into geographic coordinates.
+  - name: Reverse Geocoding
+    description: Convert latitude/longitude coordinates into a full address with locality, region, and country.
+  - name: Batch Geocoding
+    description: Run multiple forward or reverse geocoding lookups in a single request (Professional plan and above).
+paths:
+  /forward:
+    get:
+      operationId: forwardGeocode
+      summary: Forward Geocode an Address
+      description: |
+        Convert one or more location strings (street, city, place name, postal code)
+        into geographic coordinates and structured address data. Supply one or more
+        comma-separated queries to perform a batch request (Professional plan and above).
+      tags:
+        - Forward Geocoding
+        - Batch Geocoding
+      parameters:
+        - $ref: '#/components/parameters/AccessKey'
+        - name: query
+          in: query
+          required: true
+          description: |
+            The address, place name, or location string to geocode. To run a batch
+            request, pass multiple comma-separated queries (Professional plan and above).
+          schema:
+            type: string
+          example: "1600 Pennsylvania Ave NW, Washington DC"
+        - $ref: '#/components/parameters/Country'
+        - $ref: '#/components/parameters/Region'
+        - $ref: '#/components/parameters/Bbox'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Language'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Output'
+        - $ref: '#/components/parameters/Callback'
+        - $ref: '#/components/parameters/CountryModule'
+        - $ref: '#/components/parameters/SunModule'
+        - $ref: '#/components/parameters/TimezoneModule'
+        - $ref: '#/components/parameters/BboxModule'
+      responses:
+        '200':
+          description: Successful geocoding response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodingResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GeocodingResponse'
+            application/geo+json:
+              schema:
+                $ref: '#/components/schemas/GeoJSONFeatureCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /reverse:
+    get:
+      operationId: reverseGeocode
+      summary: Reverse Geocode Coordinates
+      description: |
+        Convert one or more latitude/longitude coordinate pairs into structured
+        address data. Supply one or more semicolon-separated coordinate pairs
+        (or comma-separated batched queries) to perform a batch request
+        (Professional plan and above).
+      tags:
+        - Reverse Geocoding
+        - Batch Geocoding
+      parameters:
+        - $ref: '#/components/parameters/AccessKey'
+        - name: query
+          in: query
+          required: true
+          description: |
+            Latitude and longitude coordinate pair as a comma-separated string
+            ("LAT,LON"). For batch reverse lookups, separate multiple pairs with
+            a semicolon (Professional plan and above).
+          schema:
+            type: string
+            pattern: '^-?\d+(\.\d+)?,-?\d+(\.\d+)?(;-?\d+(\.\d+)?,-?\d+(\.\d+)?)*$'
+          example: "40.7638435,-73.9729691"
+        - $ref: '#/components/parameters/Country'
+        - $ref: '#/components/parameters/Region'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Language'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Output'
+        - $ref: '#/components/parameters/Callback'
+        - $ref: '#/components/parameters/CountryModule'
+        - $ref: '#/components/parameters/SunModule'
+        - $ref: '#/components/parameters/TimezoneModule'
+        - $ref: '#/components/parameters/BboxModule'
+      responses:
+        '200':
+          description: Successful reverse geocoding response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodingResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GeocodingResponse'
+            application/geo+json:
+              schema:
+                $ref: '#/components/schemas/GeoJSONFeatureCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  securitySchemes:
+    AccessKeyAuth:
+      type: apiKey
+      in: query
+      name: access_key
+      description: API access key obtained from your positionstack dashboard.
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Your positionstack API access key.
+      schema:
+        type: string
+    Country:
+      name: country
+      in: query
+      required: false
+      description: |
+        Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).
+      schema:
+        type: string
+      example: "US,CA"
+    Region:
+      name: region
+      in: query
+      required: false
+      description: Filter results by region or state name.
+      schema:
+        type: string
+      example: "California"
+    Bbox:
+      name: bbox
+      in: query
+      required: false
+      description: |
+        Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the
+        geographic area of the search.
+      schema:
+        type: string
+      example: "-74.2591,40.4774,-73.7004,40.9176"
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of results returned. Defaults to 10, maximum 80.
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 80
+    Language:
+      name: language
+      in: query
+      required: false
+      description: Two-letter ISO 639-1 language code for localized results.
+      schema:
+        type: string
+      example: "en"
+    Fields:
+      name: fields
+      in: query
+      required: false
+      description: |
+        Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).
+        Defaults to all fields.
+      schema:
+        type: string
+        default: "all"
+    Output:
+      name: output
+      in: query
+      required: false
+      description: Response output format.
+      schema:
+        type: string
+        enum: [json, xml, geojson]
+        default: json
+    Callback:
+      name: callback
+      in: query
+      required: false
+      description: JSONP callback function name (JSON output only).
+      schema:
+        type: string
+    CountryModule:
+      name: country_module
+      in: query
+      required: false
+      description: |
+        Set to `1` to enrich results with country-level data such as ISO codes,
+        capital, population, currency, language, flag URLs, and dial code.
+      schema:
+        type: integer
+        enum: [0, 1]
+        default: 0
+    SunModule:
+      name: sun_module
+      in: query
+      required: false
+      description: |
+        Set to `1` to enrich results with sunrise, sunset, and solar transit times
+        for the location.
+      schema:
+        type: integer
+        enum: [0, 1]
+        default: 0
+    TimezoneModule:
+      name: timezone_module
+      in: query
+      required: false
+      description: |
+        Set to `1` to enrich results with timezone name, abbreviation, GMT offset,
+        and DST status.
+      schema:
+        type: integer
+        enum: [0, 1]
+        default: 0
+    BboxModule:
+      name: bbox_module
+      in: query
+      required: false
+      description: |
+        Set to `1` to include the bounding box coordinates of each returned result.
+      schema:
+        type: integer
+        enum: [0, 1]
+        default: 0
+  responses:
+    Unauthorized:
+      description: Missing or invalid access_key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Subscription does not permit this request (e.g. HTTPS or batch on Free plan).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Monthly request quota exhausted or rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: An unexpected server-side error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    GeocodingResponse:
+      type: object
+      description: A wrapper containing the array of geocoded location results.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      description: A single geocoded location result.
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Geographic latitude in decimal degrees.
+        longitude:
+          type: number
+          format: double
+          description: Geographic longitude in decimal degrees.
+        type:
+          type: string
+          description: |
+            Result classification (e.g. `address`, `venue`, `street`, `neighbourhood`,
+            `borough`, `locality`, `county`, `macrocounty`, `region`, `macroregion`,
+            `country`, `coarse`, `postalcode`).
+        name:
+          type: string
+          description: The short name of the location (e.g. building or street name).
+        number:
+          type: string
+          nullable: true
+          description: Building or street number.
+        postal_code:
+          type: string
+          nullable: true
+          description: Postal/ZIP code of the address.
+        street:
+          type: string
+          nullable: true
+          description: Street name.
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Confidence score (0.0-1.0) representing match quality.
+        region:
+          type: string
+          nullable: true
+          description: Name of the region (state, province).
+        region_code:
+          type: string
+          nullable: true
+          description: ISO 3166-2 region code.
+        county:
+          type: string
+          nullable: true
+          description: County name.
+        locality:
+          type: string
+          nullable: true
+          description: Locality / city name.
+        administrative_area:
+          type: string
+          nullable: true
+          description: Administrative area name.
+        neighbourhood:
+          type: string
+          nullable: true
+          description: Neighbourhood name.
+        country:
+          type: string
+          description: Country name.
+        country_code:
+          type: string
+          description: ISO 3166 alpha-3 country code.
+        continent:
+          type: string
+          nullable: true
+          description: Continent name.
+        label:
+          type: string
+          description: Fully formatted label for the result.
+        map_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Embeddable map URL for the location (iFrame).
+        distance:
+          type: number
+          format: float
+          nullable: true
+          description: Distance (meters) from the query coordinates (reverse geocoding only).
+        bbox_module:
+          type: array
+          nullable: true
+          description: Bounding box of the result as `[min_lon, min_lat, max_lon, max_lat]` (requires `bbox_module=1`).
+          items:
+            type: number
+            format: double
+        country_module:
+          $ref: '#/components/schemas/CountryModuleData'
+        timezone_module:
+          $ref: '#/components/schemas/TimezoneModuleData'
+        sun_module:
+          $ref: '#/components/schemas/SunModuleData'
+    CountryModuleData:
+      type: object
+      nullable: true
+      description: Country-level enrichment data (requires `country_module=1`).
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        common_name:
+          type: string
+        official_name:
+          type: string
+        capital:
+          type: string
+        flag:
+          type: string
+          format: uri
+        area:
+          type: number
+          format: float
+          description: Area in square kilometers.
+        landlocked:
+          type: boolean
+        independent:
+          type: boolean
+        global:
+          type: object
+          properties:
+            alpha2:
+              type: string
+            alpha3:
+              type: string
+            numeric_code:
+              type: string
+            region:
+              type: string
+            subregion:
+              type: string
+            region_code:
+              type: string
+            subregion_code:
+              type: string
+            world_region:
+              type: string
+            continent_name:
+              type: string
+            continent_code:
+              type: string
+        dial:
+          type: object
+          properties:
+            calling_code:
+              type: string
+            national_prefix:
+              type: string
+            international_prefix:
+              type: string
+        currencies:
+          type: array
+          items:
+            type: object
+            properties:
+              symbol:
+                type: string
+              code:
+                type: string
+              name:
+                type: string
+              numeric:
+                type: string
+              minor_unit:
+                type: string
+        languages:
+          type: object
+          additionalProperties:
+            type: string
+    TimezoneModuleData:
+      type: object
+      nullable: true
+      description: Timezone enrichment data (requires `timezone_module=1`).
+      properties:
+        name:
+          type: string
+          description: IANA timezone name (e.g. `America/New_York`).
+        abbreviation:
+          type: string
+        offset_sec:
+          type: integer
+        offset_string:
+          type: string
+        gmt_offset:
+          type: integer
+        is_dst:
+          type: boolean
+    SunModuleData:
+      type: object
+      nullable: true
+      description: Sunrise/sunset data (requires `sun_module=1`).
+      properties:
+        rise:
+          type: object
+          properties:
+            time:
+              type: integer
+              description: Unix timestamp of sunrise.
+            astronomical:
+              type: integer
+            civil:
+              type: integer
+            nautical:
+              type: integer
+        set:
+          type: object
+          properties:
+            time:
+              type: integer
+              description: Unix timestamp of sunset.
+            astronomical:
+              type: integer
+            civil:
+              type: integer
+            nautical:
+              type: integer
+        transit:
+          type: integer
+          description: Unix timestamp of solar transit (noon).
+    GeoJSONFeatureCollection:
+      type: object
+      description: Standard GeoJSON FeatureCollection envelope (when `output=geojson`).
+      properties:
+        type:
+          type: string
+          enum: [FeatureCollection]
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoJSONFeature'
+    GeoJSONFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [Feature]
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [Point]
+            coordinates:
+              type: array
+              minItems: 2
+              maxItems: 2
+              items:
+                type: number
+                format: double
+        properties:
+          $ref: '#/components/schemas/Location'
+    ErrorResponse:
+      type: object
+      description: Standard apilayer/positionstack error envelope.
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: |
+                Numeric error code (e.g. 101 invalid_access_key, 103 invalid_api_function,
+                104 usage_limit_reached, 105 function_access_restricted, 601 invalid_query,
+                602 no_results_found, 603 invalid_latitude, 604 invalid_longitude, 605 invalid_bbox).
+            type:
+              type: string
+              description: Error type slug.
+            info:
+              type: string
+              description: Human-readable error description.
