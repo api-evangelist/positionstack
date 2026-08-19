@@ -1,0 +1,1411 @@
+{
+  "item": [
+    {
+      "id": "d74f4eb2-2e34-4e6c-9467-e5a855e34c9c",
+      "name": "Batch Geocoding",
+      "description": {
+        "content": "Run multiple forward or reverse geocoding lookups in a single request (Professional plan and above).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "852833af-f5f9-424b-a7ea-9c8fda283bf6",
+          "name": "Forward Geocode an Address",
+          "request": {
+            "name": "Forward Geocode an Address",
+            "description": {
+              "content": "Convert one or more location strings (street, city, place name, postal code)\ninto geographic coordinates and structured address data. Supply one or more\ncomma-separated queries to perform a batch request (Professional plan and above).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_key",
+                  "value": "<string>",
+                  "description": "(Required) Your positionstack API access key."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The address, place name, or location string to geocode. To run a batch\nrequest, pass multiple comma-separated queries (Professional plan and above).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Filter results by region or state name."
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "Bounding box filter as `min_lon,min_lat,max_lon,max_lat` to restrict the\ngeographic area of the search.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results returned. Defaults to 10, maximum 80."
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Two-letter ISO 639-1 language code for localized results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "all",
+                  "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "json",
+                  "description": "Response output format."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback function name (JSON output only)."
+                },
+                {
+                  "disabled": false,
+                  "key": "country_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sun_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox_module",
+                  "value": "0",
+                  "description": "Set to `1` to include the bounding box coordinates of each returned result.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0997c3ae-5fb9-4279-b6f9-2cc0efb006ac",
+              "name": "Successful geocoding response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"latitude\": 2134.012236969922,\n      \"longitude\": 443.4723290392462,\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"postal_code\": \"string\",\n      \"street\": \"string\",\n      \"confidence\": 0.5549769212161831,\n      \"region\": \"string\",\n      \"region_code\": \"string\",\n      \"county\": \"string\",\n      \"locality\": \"string\",\n      \"administrative_area\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\",\n      \"continent\": \"string\",\n      \"label\": \"string\",\n      \"map_url\": \"http://zHXINsRnkoeIGKQjOKbHDpZxVp.tlkaXqV+d-tF.dxryqGDZgYPDKNETax9KyOqMv\",\n      \"distance\": 9725.568637092842,\n      \"bbox_module\": [\n        8469.200620650998,\n        9246.378889524707\n      ],\n      \"country_module\": {\n        \"latitude\": 3243.9356935292085,\n        \"longitude\": 9160.603790850879,\n        \"common_name\": \"string\",\n        \"official_name\": \"string\",\n        \"capital\": \"string\",\n        \"flag\": \"http://OahjFHMgIF.iumTplbQVo\",\n        \"area\": 5426.2860460638885,\n        \"landlocked\": true,\n        \"independent\": true,\n        \"global\": {\n          \"alpha2\": \"string\",\n          \"alpha3\": \"string\",\n          \"numeric_code\": \"string\",\n          \"region\": \"string\",\n          \"subregion\": \"string\",\n          \"region_code\": \"string\",\n          \"subregion_code\": \"string\",\n          \"world_region\": \"string\",\n          \"continent_name\": \"string\",\n          \"continent_code\": \"string\"\n        },\n        \"dial\": {\n          \"calling_code\": \"string\",\n          \"national_prefix\": \"string\",\n          \"international_prefix\": \"string\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          }\n        ],\n        \"languages\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"string\",\n        \"abbreviation\": \"string\",\n        \"offset_sec\": 775,\n        \"offset_string\": \"string\",\n        \"gmt_offset\": 5634,\n        \"is_dst\": true\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": 8926,\n          \"astronomical\": 336,\n          \"civil\": 9282,\n          \"nautical\": 1569\n        },\n        \"set\": {\n          \"time\": 9784,\n          \"astronomical\": 8397,\n          \"civil\": 6906,\n          \"nautical\": 4462\n        },\n        \"transit\": 7835\n      }\n    },\n    {\n      \"latitude\": 3921.83639007485,\n      \"longitude\": 2499.180168932019,\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"postal_code\": \"string\",\n      \"street\": \"string\",\n      \"confidence\": 0.17439096279937738,\n      \"region\": \"string\",\n      \"region_code\": \"string\",\n      \"county\": \"string\",\n      \"locality\": \"string\",\n      \"administrative_area\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\",\n      \"continent\": \"string\",\n      \"label\": \"string\",\n      \"map_url\": \"https://VwhOFty.jrEa.wrzCwAs6vxoc1YO7p8Hnrq2qognwJghasO0w4H95\",\n      \"distance\": 5415.546305264049,\n      \"bbox_module\": [\n        6510.324708430174,\n        1441.258293233124\n      ],\n      \"country_module\": {\n        \"latitude\": 6269.906608826006,\n        \"longitude\": 3436.992182414167,\n        \"common_name\": \"string\",\n        \"official_name\": \"string\",\n        \"capital\": \"string\",\n        \"flag\": \"http://pRsKUMk.dkjyubZ-CB-aVZH1XXpIPBlMTE6AZz8hvqW0K3GqaT5Aid,6q4LsaQud2rnWApQcXYMUzml75FGH\",\n        \"area\": 7206.972197933993,\n        \"landlocked\": true,\n        \"independent\": true,\n        \"global\": {\n          \"alpha2\": \"string\",\n          \"alpha3\": \"string\",\n          \"numeric_code\": \"string\",\n          \"region\": \"string\",\n          \"subregion\": \"string\",\n          \"region_code\": \"string\",\n          \"subregion_code\": \"string\",\n          \"world_region\": \"string\",\n          \"continent_name\": \"string\",\n          \"continent_code\": \"string\"\n        },\n        \"dial\": {\n          \"calling_code\": \"string\",\n          \"national_prefix\": \"string\",\n          \"international_prefix\": \"string\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          }\n        ],\n        \"languages\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"string\",\n        \"abbreviation\": \"string\",\n        \"offset_sec\": 7018,\n        \"offset_string\": \"string\",\n        \"gmt_offset\": 5778,\n        \"is_dst\": true\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": 3319,\n          \"astronomical\": 7881,\n          \"civil\": 8467,\n          \"nautical\": 1885\n        },\n        \"set\": {\n          \"time\": 3611,\n          \"astronomical\": 9838,\n          \"civil\": 9642,\n          \"nautical\": 3672\n        },\n        \"transit\": 3002\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5e8c39b-e263-4da3-af33-b007dfad552f",
+              "name": "Missing or invalid access_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f52fceaa-59fa-46a4-849b-072bae1022dd",
+              "name": "Subscription does not permit this request (e.g. HTTPS or batch on Free plan).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78c863aa-bb91-4a41-a9cf-800977eaea71",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae54440d-a899-4146-9e66-e7075620d715",
+              "name": "Monthly request quota exhausted or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb757b0f-13ca-45d1-8444-1dee2ad97f68",
+              "name": "An unexpected server-side error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "1600 Pennsylvania Ave NW, Washington DC"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "bbox",
+                      "value": "-74.2591,40.4774,-73.7004,40.9176"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25c0ad9d-896a-42ec-a028-b650c97a20f9",
+          "name": "Reverse Geocode Coordinates",
+          "request": {
+            "name": "Reverse Geocode Coordinates",
+            "description": {
+              "content": "Convert one or more latitude/longitude coordinate pairs into structured\naddress data. Supply one or more semicolon-separated coordinate pairs\n(or comma-separated batched queries) to perform a batch request\n(Professional plan and above).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reverse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_key",
+                  "value": "<string>",
+                  "description": "(Required) Your positionstack API access key."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Latitude and longitude coordinate pair as a comma-separated string\n(\"LAT,LON\"). For batch reverse lookups, separate multiple pairs with\na semicolon (Professional plan and above).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Filter results by region or state name."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results returned. Defaults to 10, maximum 80."
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Two-letter ISO 639-1 language code for localized results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "all",
+                  "description": "Comma-separated whitelist of fields to include in the response (e.g. `results.latitude,results.longitude`).\nDefaults to all fields.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "json",
+                  "description": "Response output format."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback function name (JSON output only)."
+                },
+                {
+                  "disabled": false,
+                  "key": "country_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with country-level data such as ISO codes,\ncapital, population, currency, language, flag URLs, and dial code.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sun_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with sunrise, sunset, and solar transit times\nfor the location.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone_module",
+                  "value": "0",
+                  "description": "Set to `1` to enrich results with timezone name, abbreviation, GMT offset,\nand DST status.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox_module",
+                  "value": "0",
+                  "description": "Set to `1` to include the bounding box coordinates of each returned result.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecc721f9-ece5-483b-9f4e-8319d25c4995",
+              "name": "Successful reverse geocoding response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"latitude\": 6331.428991437382,\n      \"longitude\": 8435.059387128535,\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"postal_code\": \"string\",\n      \"street\": \"string\",\n      \"confidence\": 0.8237598568230751,\n      \"region\": \"string\",\n      \"region_code\": \"string\",\n      \"county\": \"string\",\n      \"locality\": \"string\",\n      \"administrative_area\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\",\n      \"continent\": \"string\",\n      \"label\": \"string\",\n      \"map_url\": \"http://a.lmqMGqKlJMK2a\",\n      \"distance\": 8706.863331803994,\n      \"bbox_module\": [\n        3219.712422294544,\n        4592.236085108206\n      ],\n      \"country_module\": {\n        \"latitude\": 6825.538430838772,\n        \"longitude\": 9167.317367796699,\n        \"common_name\": \"string\",\n        \"official_name\": \"string\",\n        \"capital\": \"string\",\n        \"flag\": \"https://mMyAsbLSLGNeXRpRrZDoneNSG.tqgJd6COeps4qOCgCTylxvmMsMy7XnHhSDqTt-pl60s97yNnR2b--iHfZevr73+EonV\",\n        \"area\": 4392.870330698712,\n        \"landlocked\": true,\n        \"independent\": false,\n        \"global\": {\n          \"alpha2\": \"string\",\n          \"alpha3\": \"string\",\n          \"numeric_code\": \"string\",\n          \"region\": \"string\",\n          \"subregion\": \"string\",\n          \"region_code\": \"string\",\n          \"subregion_code\": \"string\",\n          \"world_region\": \"string\",\n          \"continent_name\": \"string\",\n          \"continent_code\": \"string\"\n        },\n        \"dial\": {\n          \"calling_code\": \"string\",\n          \"national_prefix\": \"string\",\n          \"international_prefix\": \"string\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          }\n        ],\n        \"languages\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"string\",\n        \"abbreviation\": \"string\",\n        \"offset_sec\": 9539,\n        \"offset_string\": \"string\",\n        \"gmt_offset\": 1960,\n        \"is_dst\": true\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": 7018,\n          \"astronomical\": 254,\n          \"civil\": 9675,\n          \"nautical\": 6315\n        },\n        \"set\": {\n          \"time\": 5233,\n          \"astronomical\": 4649,\n          \"civil\": 9367,\n          \"nautical\": 7592\n        },\n        \"transit\": 516\n      }\n    },\n    {\n      \"latitude\": 47.594614868421424,\n      \"longitude\": 3937.9790434344363,\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"postal_code\": \"string\",\n      \"street\": \"string\",\n      \"confidence\": 0.4530244339409082,\n      \"region\": \"string\",\n      \"region_code\": \"string\",\n      \"county\": \"string\",\n      \"locality\": \"string\",\n      \"administrative_area\": \"string\",\n      \"neighbourhood\": \"string\",\n      \"country\": \"string\",\n      \"country_code\": \"string\",\n      \"continent\": \"string\",\n      \"label\": \"string\",\n      \"map_url\": \"http://zDmWWBXyyZNIcvgX.fykgTmbz1br9OJz7og9TqQAIOzkdw53ic9h.1JEhPd\",\n      \"distance\": 2099.6070338209815,\n      \"bbox_module\": [\n        1544.2641801932543,\n        6732.890073221735\n      ],\n      \"country_module\": {\n        \"latitude\": 7705.564339852673,\n        \"longitude\": 7194.156364293125,\n        \"common_name\": \"string\",\n        \"official_name\": \"string\",\n        \"capital\": \"string\",\n        \"flag\": \"http://tHAtqGtVpIKB.ggdhGgjeZ4bFzTdSp5E9R.UbSxHK7F4O,UqREhx2oD,T,rTtYAHWjDS5pCu6kFEAx.TfMMc.w4gWV\",\n        \"area\": 8891.428303419149,\n        \"landlocked\": true,\n        \"independent\": true,\n        \"global\": {\n          \"alpha2\": \"string\",\n          \"alpha3\": \"string\",\n          \"numeric_code\": \"string\",\n          \"region\": \"string\",\n          \"subregion\": \"string\",\n          \"region_code\": \"string\",\n          \"subregion_code\": \"string\",\n          \"world_region\": \"string\",\n          \"continent_name\": \"string\",\n          \"continent_code\": \"string\"\n        },\n        \"dial\": {\n          \"calling_code\": \"string\",\n          \"national_prefix\": \"string\",\n          \"international_prefix\": \"string\"\n        },\n        \"currencies\": [\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"numeric\": \"string\",\n            \"minor_unit\": \"string\"\n          }\n        ],\n        \"languages\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      \"timezone_module\": {\n        \"name\": \"string\",\n        \"abbreviation\": \"string\",\n        \"offset_sec\": 577,\n        \"offset_string\": \"string\",\n        \"gmt_offset\": 4652,\n        \"is_dst\": true\n      },\n      \"sun_module\": {\n        \"rise\": {\n          \"time\": 8220,\n          \"astronomical\": 155,\n          \"civil\": 3211,\n          \"nautical\": 9272\n        },\n        \"set\": {\n          \"time\": 1284,\n          \"astronomical\": 9459,\n          \"civil\": 2926,\n          \"nautical\": 5642\n        },\n        \"transit\": 206\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "789b24ca-fb0b-40e2-ad98-a721822c72ce",
+              "name": "Missing or invalid access_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93caa908-ed81-445e-995c-8dfa89cf5036",
+              "name": "Subscription does not permit this request (e.g. HTTPS or batch on Free plan).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb1425e4-6c9c-420c-a3ee-76a4e1f72f24",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "446c5cab-0bd1-4122-a363-42b298e380e0",
+              "name": "Monthly request quota exhausted or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44cb9bca-c8fd-449f-9010-59af00763820",
+              "name": "An unexpected server-side error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "40.7638435,-73.9729691"
+                    },
+                    {
+                      "key": "country",
+                      "value": "US,CA"
+                    },
+                    {
+                      "key": "region",
+                      "value": "California"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "all"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sun_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timezone_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "bbox_module",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": 995,\n    \"type\": \"string\",\n    \"info\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.positionstack.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "59ef66fb-ebe9-4f26-9a77-6d7fdeac9b8c",
+    "name": "positionstack Batch Geocoding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Forward and Reverse Batch Geocoding REST API by positionstack (apilayer).\nConvert addresses to coordinates (forward geocoding) and coordinates to addresses\n(reverse geocoding). Supports batch requests, multiple output formats\n(JSON, XML, GeoJSON), 2+ billion global places, and add-on modules for timezone,\nbounding box, country, and sun (sunrise/sunset) data.\n\n\nContact Support:\n Name: positionstack Support\n Email: support@positionstack.com",
+      "type": "text/plain"
+    }
+  }
+}

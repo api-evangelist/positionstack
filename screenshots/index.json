@@ -6,5 +6,14 @@
     "source_type": "Portal",
     "file": "positionstack-2026-06-20T191943.png",
     "bytes": 255126
+  },
+  {
+    "repo": "positionstack",
+    "captured_at": "2026-08-17T124828",
+    "source_url": "https://positionstack.com",
+    "source_type": "root-domain",
+    "file": "positionstack-2026-08-17T124828.png",
+    "bytes": 175731,
+    "capture": "playwright-local"
   }
 ]
