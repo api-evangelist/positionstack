@@ -33,6 +33,14 @@ tags:
   - Maps
   - Location
   - Address Validation
+  - APILayer
+  - Public APIs
+tags_raw:
+  - Geocoding
+  - Reverse Geocoding
+  - Maps
+  - Location
+  - Address Validation
   - apilayer
   - Public APIs
 apis:
