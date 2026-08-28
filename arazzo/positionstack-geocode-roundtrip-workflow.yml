@@ -13,8 +13,11 @@ info:
     can be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: positionstackApi
-  url: ../openapi/positionstack-openapi.yml
+- name: forwardGeocodingApi
+  url: ../openapi/positionstack-forward-geocoding-api-openapi.yml
+  type: openapi
+- name: reverseGeocodingApi
+  url: ../openapi/positionstack-reverse-geocoding-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: geocode-roundtrip
