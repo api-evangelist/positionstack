@@ -5,6 +5,19 @@ description: >-
   addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional data modules for
   country, timezone, sun, and bounding-box enrichment.
 url: https://positionstack.com/
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -118,6 +131,8 @@ apis:
   - type: RateLimits
     url: rate-limits/positionstack-rate-limits.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/apilayer/positionstack/issues
   - type: AgenticAccess
     url: agentic-access/positionstack-agentic-access.yml
   - type: DomainSecurity
