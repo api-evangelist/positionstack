@@ -1,18 +1,23 @@
 {
   "provider": "positionstack",
   "sources": [
-    "positionstack-batch-geocoding-api-openapi.yml",
-    "positionstack-forward-geocoding-api-openapi.yml",
-    "positionstack-reverse-geocoding-api-openapi.yml"
+    "_original/positionstack-openapi.yml"
   ],
   "outputs": [
-    "positionstack-batch-geocoding-api-openapi.yml",
     "positionstack-forward-geocoding-api-openapi.yml",
     "positionstack-reverse-geocoding-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "positionstack-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "positionstack-openapi.yml: multi-axis tagging (3 tags, 2 first tags, 2.00x duplication over 2 operations) \u2014 split on first tag, 2 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "positionstack-forward-geocoding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "positionstack-reverse-geocoding-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
