@@ -49,6 +49,7 @@ tags:
   - Address Validation
   - APILayer
   - Public APIs
+  - Geospatial
 tags_raw:
   - Geocoding
   - Reverse Geocoding
@@ -57,6 +58,7 @@ tags_raw:
   - Address Validation
   - apilayer
   - Public APIs
+  - Geospatial
 apis:
 - aid: positionstack:positionstack-forward-geocoding-api
   name: positionstack Forward Geocoding API
