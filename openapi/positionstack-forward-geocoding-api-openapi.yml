@@ -110,6 +110,187 @@ components:
           type: integer
         is_dst:
           type: boolean
+    GeoJSONFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Feature
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - Point
+            coordinates:
+              type: array
+              minItems: 2
+              maxItems: 2
+              items:
+                type: number
+                format: double
+        properties:
+          $ref: '#/components/schemas/Location'
+    GeoJSONFeatureCollection:
+      type: object
+      description: Standard GeoJSON FeatureCollection envelope (when `output=geojson`).
+      properties:
+        type:
+          type: string
+          enum:
+          - FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoJSONFeature'
+    CountryModuleData:
+      type:
+      - object
+      - 'null'
+      description: Country-level enrichment data (requires `country_module=1`).
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        common_name:
+          type: string
+        official_name:
+          type: string
+        capital:
+          type: string
+        flag:
+          type: string
+          format: uri
+        area:
+          type: number
+          format: float
+          description: Area in square kilometers.
+        landlocked:
+          type: boolean
+        independent:
+          type: boolean
+        global:
+          type: object
+          properties:
+            alpha2:
+              type: string
+            alpha3:
+              type: string
+            numeric_code:
+              type: string
+            region:
+              type: string
+            subregion:
+              type: string
+            region_code:
+              type: string
+            subregion_code:
+              type: string
+            world_region:
+              type: string
+            continent_name:
+              type: string
+            continent_code:
+              type: string
+        dial:
+          type: object
+          properties:
+            calling_code:
+              type: string
+            national_prefix:
+              type: string
+            international_prefix:
+              type: string
+        currencies:
+          type: array
+          items:
+            type: object
+            properties:
+              symbol:
+                type: string
+              code:
+                type: string
+              name:
+                type: string
+              numeric:
+                type: string
+              minor_unit:
+                type: string
+        languages:
+          type: object
+          additionalProperties:
+            type: string
+    SunModuleData:
+      type:
+      - object
+      - 'null'
+      description: Sunrise/sunset data (requires `sun_module=1`).
+      properties:
+        rise:
+          type: object
+          properties:
+            time:
+              type: integer
+              description: Unix timestamp of sunrise.
+            astronomical:
+              type: integer
+            civil:
+              type: integer
+            nautical:
+              type: integer
+        set:
+          type: object
+          properties:
+            time:
+              type: integer
+              description: Unix timestamp of sunset.
+            astronomical:
+              type: integer
+            civil:
+              type: integer
+            nautical:
+              type: integer
+        transit:
+          type: integer
+          description: Unix timestamp of solar transit (noon).
+    GeocodingResponse:
+      type: object
+      description: A wrapper containing the array of geocoded location results.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+    ErrorResponse:
+      type: object
+      description: Standard apilayer/positionstack error envelope.
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 'Numeric error code (e.g. 101 invalid_access_key, 103 invalid_api_function,
+
+                104 usage_limit_reached, 105 function_access_restricted, 601 invalid_query,
+
+                602 no_results_found, 603 invalid_latitude, 604 invalid_longitude, 605 invalid_bbox).
+
+                '
+            type:
+              type: string
+              description: Error type slug.
+            info:
+              type: string
+              description: Human-readable error description.
     Location:
       type: object
       description: A single geocoded location result.
@@ -225,200 +406,7 @@ components:
           $ref: '#/components/schemas/TimezoneModuleData'
         sun_module:
           $ref: '#/components/schemas/SunModuleData'
-    GeoJSONFeatureCollection:
-      type: object
-      description: Standard GeoJSON FeatureCollection envelope (when `output=geojson`).
-      properties:
-        type:
-          type: string
-          enum:
-          - FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/GeoJSONFeature'
-    GeocodingResponse:
-      type: object
-      description: A wrapper containing the array of geocoded location results.
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
-    SunModuleData:
-      type:
-      - object
-      - 'null'
-      description: Sunrise/sunset data (requires `sun_module=1`).
-      properties:
-        rise:
-          type: object
-          properties:
-            time:
-              type: integer
-              description: Unix timestamp of sunrise.
-            astronomical:
-              type: integer
-            civil:
-              type: integer
-            nautical:
-              type: integer
-        set:
-          type: object
-          properties:
-            time:
-              type: integer
-              description: Unix timestamp of sunset.
-            astronomical:
-              type: integer
-            civil:
-              type: integer
-            nautical:
-              type: integer
-        transit:
-          type: integer
-          description: Unix timestamp of solar transit (noon).
-    CountryModuleData:
-      type:
-      - object
-      - 'null'
-      description: Country-level enrichment data (requires `country_module=1`).
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        common_name:
-          type: string
-        official_name:
-          type: string
-        capital:
-          type: string
-        flag:
-          type: string
-          format: uri
-        area:
-          type: number
-          format: float
-          description: Area in square kilometers.
-        landlocked:
-          type: boolean
-        independent:
-          type: boolean
-        global:
-          type: object
-          properties:
-            alpha2:
-              type: string
-            alpha3:
-              type: string
-            numeric_code:
-              type: string
-            region:
-              type: string
-            subregion:
-              type: string
-            region_code:
-              type: string
-            subregion_code:
-              type: string
-            world_region:
-              type: string
-            continent_name:
-              type: string
-            continent_code:
-              type: string
-        dial:
-          type: object
-          properties:
-            calling_code:
-              type: string
-            national_prefix:
-              type: string
-            international_prefix:
-              type: string
-        currencies:
-          type: array
-          items:
-            type: object
-            properties:
-              symbol:
-                type: string
-              code:
-                type: string
-              name:
-                type: string
-              numeric:
-                type: string
-              minor_unit:
-                type: string
-        languages:
-          type: object
-          additionalProperties:
-            type: string
-    GeoJSONFeature:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - Feature
-        geometry:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - Point
-            coordinates:
-              type: array
-              minItems: 2
-              maxItems: 2
-              items:
-                type: number
-                format: double
-        properties:
-          $ref: '#/components/schemas/Location'
-    ErrorResponse:
-      type: object
-      description: Standard apilayer/positionstack error envelope.
-      properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: 'Numeric error code (e.g. 101 invalid_access_key, 103 invalid_api_function,
-
-                104 usage_limit_reached, 105 function_access_restricted, 601 invalid_query,
-
-                602 no_results_found, 603 invalid_latitude, 604 invalid_longitude, 605 invalid_bbox).
-
-                '
-            type:
-              type: string
-              description: Error type slug.
-            info:
-              type: string
-              description: Human-readable error description.
   responses:
-    Unauthorized:
-      description: Missing or invalid access_key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    RateLimited:
-      description: Monthly request quota exhausted or rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found.
       content:
@@ -437,32 +425,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid access_key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Monthly request quota exhausted or rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    BboxModule:
-      name: bbox_module
+    Language:
+      name: language
       in: query
       required: false
-      description: 'Set to `1` to include the bounding box coordinates of each returned result.
-
-        '
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-        default: 0
-    Output:
-      name: output
-      in: query
-      required: false
-      description: Response output format.
+      description: Two-letter ISO 639-1 language code for localized results.
       schema:
         type: string
-        enum:
-        - json
-        - xml
-        - geojson
-        default: json
+      example: en
     Fields:
       name: fields
       in: query
@@ -475,36 +458,48 @@ components:
       schema:
         type: string
         default: all
-    Language:
-      name: language
+    Region:
+      name: region
       in: query
       required: false
-      description: Two-letter ISO 639-1 language code for localized results.
+      description: Filter results by region or state name.
       schema:
         type: string
-      example: en
-    SunModule:
-      name: sun_module
+      example: California
+    Callback:
+      name: callback
       in: query
       required: false
-      description: 'Set to `1` to enrich results with sunrise, sunset, and solar transit times
-
-        for the location.
+      description: JSONP callback function name (JSON output only).
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of results returned. Defaults to 10, maximum 80.
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 80
+    Country:
+      name: country
+      in: query
+      required: false
+      description: 'Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).
 
         '
       schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-        default: 0
-    TimezoneModule:
-      name: timezone_module
+        type: string
+      example: US,CA
+    CountryModule:
+      name: country_module
       in: query
       required: false
-      description: 'Set to `1` to enrich results with timezone name, abbreviation, GMT offset,
+      description: 'Set to `1` to enrich results with country-level data such as ISO codes,
 
-        and DST status.
+        capital, population, currency, language, flag URLs, and dial code.
 
         '
       schema:
@@ -525,45 +520,25 @@ components:
       schema:
         type: string
       example: -74.2591,40.4774,-73.7004,40.9176
-    Limit:
-      name: limit
+    Output:
+      name: output
       in: query
       required: false
-      description: Maximum number of results returned. Defaults to 10, maximum 80.
-      schema:
-        type: integer
-        default: 10
-        minimum: 1
-        maximum: 80
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Your positionstack API access key.
+      description: Response output format.
       schema:
         type: string
-    Region:
-      name: region
+        enum:
+        - json
+        - xml
+        - geojson
+        default: json
+    TimezoneModule:
+      name: timezone_module
       in: query
       required: false
-      description: Filter results by region or state name.
-      schema:
-        type: string
-      example: California
-    Callback:
-      name: callback
-      in: query
-      required: false
-      description: JSONP callback function name (JSON output only).
-      schema:
-        type: string
-    CountryModule:
-      name: country_module
-      in: query
-      required: false
-      description: 'Set to `1` to enrich results with country-level data such as ISO codes,
+      description: 'Set to `1` to enrich results with timezone name, abbreviation, GMT offset,
 
-        capital, population, currency, language, flag URLs, and dial code.
+        and DST status.
 
         '
       schema:
@@ -572,16 +547,41 @@ components:
         - 0
         - 1
         default: 0
-    Country:
-      name: country
+    BboxModule:
+      name: bbox_module
       in: query
       required: false
-      description: 'Filter results to one or more ISO 3166 alpha-2 country codes (comma separated).
+      description: 'Set to `1` to include the bounding box coordinates of each returned result.
 
         '
       schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Your positionstack API access key.
+      schema:
         type: string
-      example: US,CA
+    SunModule:
+      name: sun_module
+      in: query
+      required: false
+      description: 'Set to `1` to enrich results with sunrise, sunset, and solar transit times
+
+        for the location.
+
+        '
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+        default: 0
   securitySchemes:
     AccessKeyAuth:
       type: apiKey
