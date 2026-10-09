@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 apiCommonsPlansVersion: "0.1"
 provider:
   id: positionstack
@@ -109,3 +113,40 @@ overage:
   notifications: [0.75, 0.90, 1.00]
   description: |
     Overage allowed on paid plans; users are notified at 75%, 90%, and 100% of monthly quota.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Basic
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise (Platinum)
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
