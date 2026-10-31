@@ -1,4 +1,4 @@
-# positionstack (positionstack)
+# positionstack
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,86 +66,176 @@
 
 Forward and Reverse Batch Geocoding REST API by positionstack (an apilayer product, owned by Idera, Inc.). Convert addresses to coordinates and coordinates to addresses across 2+ billion global places, with optional data modules for country, timezone, sun, and bounding-box enrichment.
 
-**APIs.json:** [https://positionstack.com/](https://positionstack.com/)
+**Areas:** Geocoding · Reverse Geocoding · Maps · Location · Address Validation · APILayer · Public APIs · Geospatial
 
-## Tags
+## positionstack on APIs.io
 
-- Geocoding
-- Reverse Geocoding
-- Maps
-- Location
-- Address Validation
-- apilayer
-- Public APIs
+Everything profiled for positionstack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/positionstack/](https://apis.io/providers/positionstack/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (2)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-29
+- [positionstack Forward Geocoding API](https://apis.io/apis/positionstack/positionstack-forward-geocoding-api/) — Convert addresses, place names, or partial location strings into geographic coordinates.
+- [positionstack Reverse Geocoding API](https://apis.io/apis/positionstack/positionstack-reverse-geocoding-api/) — Convert latitude/longitude coordinates into a full address with locality, region, and country.
 
-## APIs
+### Published properties
 
-### positionstack Geocoding API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API providing forward geocoding (address to coordinates), reverse geocoding (coordinates to address), and batch lookups, with optional enrichment modules for country, timezone, sun, and bounding box.
+#### Arazzo workflows (3)
 
-- **Human URL:** [https://positionstack.com/](https://positionstack.com/)
-- **Base URL:** `https://api.positionstack.com/v1`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [positionstack Geocode with Confidence Branch](https://apis.io/arazzos/positionstack/positionstack-geocode-confidence-branch-workflow/)
+- [positionstack Geocode Roundtrip](https://apis.io/arazzos/positionstack/positionstack-geocode-roundtrip-workflow/)
+- [positionstack Reverse Geocode Enriched Place Profile](https://apis.io/arazzos/positionstack/positionstack-reverse-enrich-place-workflow/)
 
-- Geocoding
-- Reverse Geocoding
-- Batch Geocoding
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.apilayer.com/positionstack/docs/api-documentation)
-- [API Reference](https://docs.apilayer.com/positionstack/docs/api-documentation)
-- [Quickstart](https://docs.apilayer.com/positionstack/docs/getting-started)
-- [Authentication](https://docs.apilayer.com/positionstack/docs/api-documentation)
-- [OpenAPI](openapi/positionstack-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/positionstack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/positionstack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/positionstack-location-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/positionstack-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/positionstack-location-structure.json)
-- [J S O N- L D](json-ld/positionstack-context.jsonld)
-- [Example](examples/positionstack-forward-geocode-example.json)
-- [Example](examples/positionstack-reverse-geocode-example.json)
-- [Example](examples/positionstack-batch-forward-example.json)
-- [Example](examples/positionstack-error-example.json)
-- [Rate Limits](rate-limits/positionstack-rate-limits.yml)
+- [Positionstack Agentic Access](https://apis.io/agentic-access/positionstack/positionstack-agentic-access/)
 
-## Common Properties
+#### JSON Schema (2)
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
+The data models the API reads and writes.
+
+- [ErrorResponse](https://apis.io/schemas/positionstack/positionstack-error/)
+- [Location](https://apis.io/schemas/positionstack/positionstack-location/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Positionstack Location Structure](https://apis.io/json-structure/positionstack/positionstack-location-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Positionstack Context](https://apis.io/jsonld/positionstack/positionstack-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [positionstack Vocabulary](https://apis.io/vocabularies/positionstack/positionstack-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Positionstack Batch Forward Example](https://apis.io/examples/positionstack/positionstack-batch-forward-example/)
+- [Positionstack Error Example](https://apis.io/examples/positionstack/positionstack-error-example/)
+- [Positionstack Forward Geocode Example](https://apis.io/examples/positionstack/positionstack-forward-geocode-example/)
+- [Positionstack Reverse Geocode Example](https://apis.io/examples/positionstack/positionstack-reverse-geocode-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [positionstack](https://apis.io/collections/positionstack/open-positionstack/)
+- [positionstack Batch Geocoding API](https://apis.io/collections/positionstack/open-positionstack-batch-geocoding-api/)
+- [positionstack Batch Geocoding Forward Geocoding API](https://apis.io/collections/positionstack/open-positionstack-forward-geocoding-api/)
+- [positionstack Batch Geocoding Reverse Geocoding API](https://apis.io/collections/positionstack/open-positionstack-reverse-geocoding-api/)
+- [positionstack](https://apis.io/collections/positionstack/postman-positionstack/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [positionstack — jsonschema rules](https://apis.io/rules/positionstack/positionstack-jsonschema-spectral-rules/)
+- [positionstack API Rules](https://apis.io/rules/positionstack/positionstack-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Positionstack Authentication](https://apis.io/security/positionstack/positionstack-authentication/)
+- [Positionstack Domain Security](https://apis.io/security/positionstack/positionstack-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Positionstack Plans Pricing](https://apis.io/plans/positionstack/positionstack-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Positionstack Rate Limits](https://apis.io/rate-limits/positionstack/positionstack-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Positionstack Finops](https://apis.io/finops/positionstack/positionstack-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://positionstack.com/)
-- [Portal](https://positionstack.com/dashboard)
-- [Sign Up](https://positionstack.com/signup/free)
-- [Pricing](https://positionstack.com/product)
 - [Documentation](https://docs.apilayer.com/positionstack/docs/api-documentation)
-- [Getting Started](https://docs.apilayer.com/positionstack/docs/getting-started)
+- [Getting started](https://docs.apilayer.com/positionstack/docs/getting-started)
+- [Pricing](https://positionstack.com/product)
 - [Blog](https://blog.apilayer.com/)
-- [Status Page](https://positionstack.com/api-status)
-- [Support](mailto:support@positionstack.com)
-- [F A Q](https://positionstack.com/faq)
-- [Terms of Service](https://www.ideracorp.com/legal/APILayer)
-- [Privacy Policy](https://www.ideracorp.com/Legal/PrivacyPolicy)
-- [GitHub Organization](https://github.com/apilayer)
-- [GitHub Repository](https://github.com/apilayer/positionstack)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [Plans](plans/positionstack-plans-pricing.yml)
-- [Rate Limits](rate-limits/positionstack-rate-limits.yml)
-- [Fin Ops](finops/positionstack-finops.yml)
-- [Spectral Rules](rules/positionstack-rules.yml)
-- [Vocabulary](vocabulary/positionstack-vocabulary.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Terms of service](https://www.ideracorp.com/legal/APILayer)
+- [Privacy policy](https://www.ideracorp.com/Legal/PrivacyPolicy)
+- [GitHub](https://github.com/apilayer)
+- [Status](https://positionstack.com/api-status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 54.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 66.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 57.1 |
+| Access clarity | 52.6 |
+
+**Agent readiness 29.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/positionstack/](https://apis.io/providers/positionstack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for positionstack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/positionstack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
